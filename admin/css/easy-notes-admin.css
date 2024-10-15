@@ -1,0 +1,66 @@
+/**
+ * Admin Styles
+ *
+ * @package Easy_Notes
+ * @subpackage Easy_Notes/admin
+ * @version 1.0.0
+ */
+
+.easy-notes-section {
+	td > fieldset > .form-group,
+	td > fieldset > .form-check {
+		margin-bottom: 1.25rem;
+	}
+
+	.form-group fieldset {
+		border: .1rem dashed #aaa;
+		padding: .5rem 1rem 1rem;
+		border-radius: .5rem;
+		display: inline-block;
+	}
+
+	.form-control,
+	.form-select {
+		display: block;
+	}
+
+	.note-email {
+		min-width: 350px;
+	}
+
+	.description {
+		font-style: italic;
+	}
+
+	.form-check .description {
+		margin-top: -2px !important;
+	}
+
+	.premium {
+		padding: .75rem;
+		border-radius: .5rem;
+		border: 1px solid rgb(0 0 0 / .25);
+		position: relative;
+		cursor: not-allowed;
+		opacity: .65;
+
+		input,
+		select,
+		textarea {
+			pointer-events: none;
+			opacity: .65;
+		}
+
+		&:before {
+			content: "Premium feature";
+			position: absolute;
+			top:0;
+			right:0;
+			background: #333;
+			color: #fff;
+			padding: .1rem .5rem;
+			border-bottom-left-radius: .5rem;
+			border-top-right-radius: .5rem;
+		}
+	}
+}
