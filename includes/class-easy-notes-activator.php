@@ -24,9 +24,9 @@ class Easy_Notes_Activator
 			deactivate_plugins( 'easy-notes-lite/easy-notes.php' );
 			
 			wp_die(
-				__( "You can't activate this plugin while the premium version is active.", 'easy-notes' ),
+				esc_html__( "You can't activate this plugin while the premium version is active.", 'easy-notes-lite' ),
 				'Error activating plugin',
-				[ 'back_link' => \true ]
+				[ 'back_link' => esc_attr( \true ) ]
 			);
 		}
 

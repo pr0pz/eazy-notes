@@ -41,28 +41,48 @@ class Easy_Notes_Post
 			'singular_name'			=> $note_name,
 			'menu_name'				=> $note_name_plural,
 			'name_admin_bar'		=> $note_name_plural,
-			'archives'				=> \sprintf( __( '%s Archives', 'easy-notes' ), $note_name ),
-			'attributes'			=> \sprintf( __( '%s Attributes', 'easy-notes' ), $note_name ),
-			'all_items'				=> \sprintf( __( 'All %s', 'easy-notes' ), $note_name_plural ),
-			'add_new_item'			=> \sprintf( __( 'Add New %s', 'easy-notes' ), $note_name ),
-			'add_new'				=> esc_attr__( 'Add New', 'easy-notes' ),
-			'new_item'				=> \sprintf( __( 'New %s', 'easy-notes' ), $note_name ),
-			'edit_item'				=> \sprintf( __( 'Edit %s', 'easy-notes' ), $note_name ),
-			'update_item'			=> \sprintf( __( 'Update %s', 'easy-notes' ), $note_name ),
-			'view_item'				=> \sprintf( __( 'View %s', 'easy-notes' ), $note_name ),
-			'view_items'			=> \sprintf( __( 'View %s', 'easy-notes' ), $note_name_plural ),
-			'search_items'			=> \sprintf( __( 'Search %s', 'easy-notes' ), $note_name ),
-			'not_found'			 	=> __( 'Not found', 'easy-notes' ),
-			'not_found_in_trash'	=> __( 'Not found in Trash', 'easy-notes' ),
-			'featured_image'		=> \sprintf( __( '%s Image', 'easy-notes' ), $note_name ),
-			'set_featured_image'	=> \sprintf( __( 'Set %s image', 'easy-notes' ), $note_name ),
-			'remove_featured_image' => \sprintf( __( 'Remove %s image', 'easy-notes' ), $note_name ),
-			'use_featured_image'	=> \sprintf( __( 'Use as %s image', 'easy-notes' ), $note_name ),
-			'insert_into_item'		=> \sprintf( __( 'Insert into %s', 'easy-notes' ), $note_name ),
-			'uploaded_to_this_item' => \sprintf( __( 'Uploaded to this %s', 'easy-notes' ), $note_name ),
-			'items_list'			=> \sprintf( __( '%s list', 'easy-notes' ), $note_name_plural ),
-			'items_list_navigation' => \sprintf( __( '%s list navigation', 'easy-notes' ), $note_name_plural ),
-			'filter_items_list'	 	=> \sprintf( __( 'Filter %s list', 'easy-notes' ), $note_name_plural ),
+			/* translators: %s: note name */
+			'archives'				=> \sprintf( __( '%s Archives', 'easy-notes-lite' ), $note_name ),
+			/* translators: %s: note name */
+			'attributes'			=> \sprintf( __( '%s Attributes', 'easy-notes-lite' ), $note_name ),
+			/* translators: %s: note name plural */
+			'all_items'				=> \sprintf( __( 'All %s', 'easy-notes-lite' ), $note_name_plural ),
+			/* translators: %s: note name */
+			'add_new_item'			=> \sprintf( __( 'Add New %s', 'easy-notes-lite' ), $note_name ),
+			/* translators: %s: note name */
+			'add_new'				=> esc_attr__( 'Add New', 'easy-notes-lite' ),
+			/* translators: %s: note name */
+			'new_item'				=> \sprintf( __( 'New %s', 'easy-notes-lite' ), $note_name ),
+			/* translators: %s: note name */
+			'edit_item'				=> \sprintf( __( 'Edit %s', 'easy-notes-lite' ), $note_name ),
+			/* translators: %s: note name */
+			'update_item'			=> \sprintf( __( 'Update %s', 'easy-notes-lite' ), $note_name ),
+			/* translators: %s: note name */
+			'view_item'				=> \sprintf( __( 'View %s', 'easy-notes-lite' ), $note_name ),
+			/* translators: %s: note name plural */
+			'view_items'			=> \sprintf( __( 'View %s', 'easy-notes-lite' ), $note_name_plural ),
+			/* translators: %s: note name */
+			'search_items'			=> \sprintf( __( 'Search %s', 'easy-notes-lite' ), $note_name ),
+			'not_found'			 	=> __( 'Not found', 'easy-notes-lite' ),
+			'not_found_in_trash'	=> __( 'Not found in Trash', 'easy-notes-lite' ),
+			/* translators: %s: note name */
+			'featured_image'		=> \sprintf( __( '%s Image', 'easy-notes-lite' ), $note_name ),
+			/* translators: %s: note name */
+			'set_featured_image'	=> \sprintf( __( 'Set %s image', 'easy-notes-lite' ), $note_name ),
+			/* translators: %s: note name */
+			'remove_featured_image' => \sprintf( __( 'Remove %s image', 'easy-notes-lite' ), $note_name ),
+			/* translators: %s: note name */
+			'use_featured_image'	=> \sprintf( __( 'Use as %s image', 'easy-notes-lite' ), $note_name ),
+			/* translators: %s: note name */
+			'insert_into_item'		=> \sprintf( __( 'Insert into %s', 'easy-notes-lite' ), $note_name ),
+			/* translators: %s: note name */
+			'uploaded_to_this_item' => \sprintf( __( 'Uploaded to this %s', 'easy-notes-lite' ), $note_name ),
+			/* translators: %s: note name */
+			'items_list'			=> \sprintf( __( '%s list', 'easy-notes-lite' ), $note_name_plural ),
+			/* translators: %s: note name */
+			'items_list_navigation' => \sprintf( __( '%s list navigation', 'easy-notes-lite' ), $note_name_plural ),
+			/* translators: %s: note name */
+			'filter_items_list'	 	=> \sprintf( __( 'Filter %s list', 'easy-notes-lite' ), $note_name_plural ),
 		];
 
 		// URL format
@@ -129,7 +149,7 @@ class Easy_Notes_Post
 		
 		if ( post_password_required( $post_id ) )
 		{
-			return __( 'Password protected', 'easy-notes' );
+			return __( 'Password protected', 'easy-notes-lite' );
 		}
 
 		return $title;

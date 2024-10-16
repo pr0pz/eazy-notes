@@ -22,6 +22,9 @@ class Easy_Notes_Admin
 	/** Plugin slug. */
 	protected string $plugin_url;	
 
+	/** Plugin version. */
+	protected string $plugin_version;	
+
 	/** PLugin Options Instance. */
 	protected Easy_Notes_Options $plugin_options;
 
@@ -35,12 +38,14 @@ class Easy_Notes_Admin
 	public function __construct(
 		string $plugin_name,
 		string $plugin_url,
+		string $plugin_version,
 		Easy_Notes_Options $plugin_options
 	)
 	{
 		$this->plugin_name = $plugin_name;
 		$this->plugin_id = sanitize_title_with_dashes( $plugin_name );
 		$this->plugin_url = $plugin_url;
+		$this->plugin_version = $plugin_version;
 		$this->plugin_options = $plugin_options;
 	}
 
@@ -65,7 +70,8 @@ class Easy_Notes_Admin
 	{
 		add_submenu_page(
 			'options-general.php',
-			\sprintf( __( '%s Settings', 'easy-notes' ), $this->get_plugin_name() ),
+			/* translators: %s: plugin name */
+			\sprintf( __( '%s Settings', 'easy-notes-lite' ), $this->get_plugin_name() ),
 			$this->get_plugin_name(),
 			apply_filters( 'easy_notes_settings_page_capability', 'manage_options' ),
 			$this->plugin_options->get_option_name(),
@@ -234,7 +240,7 @@ class Easy_Notes_Admin
 				break;
 		}
 
-		echo $output;
+		echo wp_kses_post( $output );
 	}
 
 	/**
@@ -422,7 +428,8 @@ class Easy_Notes_Admin
 		{
 			return new \WP_Error(
 				'rest_forbidden',
-				\sprintf( __( '%s are only available for logged in users.', 'easy-notes' ), $this->get_note_name_plural() ),
+				/* translators: %s: note name plural */
+				\sprintf( __( '%s are only available for logged in users.', 'easy-notes-lite' ), $this->get_note_name_plural() ),
 				[ 'status' => 401 ]
 			);
 		}
@@ -433,7 +440,8 @@ class Easy_Notes_Admin
 		{
 			return new \WP_Error(
 				'rest_forbidden',
-				\sprintf( __( '%s are only available for roles with `%s` capability.', 'easy-notes' ), $this->get_note_name_plural(), $edit_note_capability ),
+				/* translators: %s: note name plural */
+				\sprintf( __( '%1$s are only available for roles with `%2$s` capability.', 'easy-notes-lite' ), $this->get_note_name_plural(), $edit_note_capability ),
 				[ 'status' => 403 ]
 			);
 		}
@@ -477,11 +485,8 @@ class Easy_Notes_Admin
 	 */
 	public function load_plugin_textdomain(): void
 	{
-		load_plugin_textdomain(
-			'easy-notes',
-			\false,
-			$this->get_plugin_id() . '/languages'
-		);
+		$plugin_rel_path = $this->get_plugin_id() . '/languages';
+		load_plugin_textdomain( 'easy-notes-lite', false, $plugin_rel_path );
 	}
 
 	/**
@@ -508,7 +513,9 @@ class Easy_Notes_Admin
 		{
 			wp_enqueue_style( 
 				$this->get_plugin_id() . '-admin',
-				$this->get_plugin_url() . 'admin/css/' . $this->get_plugin_id() . '-admin.css'
+				$this->get_plugin_url() . 'admin/css/' . $this->get_plugin_id() . '-admin.css',
+				[],
+				$this->plugin_version
 			);
 		}
 	}

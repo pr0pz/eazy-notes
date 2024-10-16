@@ -18,7 +18,7 @@
  * Author URI:        https://propz.de
  * License:           GPL v3 or later
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.html
- * Text Domain:       easy-notes
+ * Text Domain:       easy-notes-lite
  * Domain Path:       /languages
  */
 
@@ -27,6 +27,7 @@ namespace Propz\Easy_Notes_Lite;
 \defined( 'ABSPATH' ) || exit;
 
 \define( 'EASY_NOTES_LITE_PLUGIN_NAME', 'Easy Notes' );
+\define( 'EASY_NOTES_LITE_VERSION', '1.0.0' );
 \define( 'EASY_NOTES_LITE_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 \define( 'EASY_NOTES_LITE_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
@@ -61,6 +62,7 @@ namespace Propz\Easy_Notes_Lite;
 	$plugin = new Easy_Notes(
 		EASY_NOTES_LITE_PLUGIN_NAME,
 		EASY_NOTES_LITE_PLUGIN_PATH,
-		EASY_NOTES_LITE_PLUGIN_URL
+		EASY_NOTES_LITE_PLUGIN_URL,
+		EASY_NOTES_LITE_VERSION
 	);
 	$plugin->run();

@@ -28,18 +28,23 @@ class Easy_Notes
 	/** Plugin url path on server. */
 	protected string $plugin_url;
 
+	/** Plugin version. */
+	protected string $plugin_version;
+
 	/**
 	 * Core plugin functionality.
 	 */
 	public function __construct(
 		string $plugin_name,
 		string $plugin_path,
-		string $plugin_url
+		string $plugin_url,
+		string $plugin_version
 	)
 	{
 		$this->plugin_name = $plugin_name;
 		$this->plugin_path = $plugin_path;
 		$this->plugin_url = $plugin_url;
+		$this->plugin_version = $plugin_version;
 
 		$this->load_dependencies();
 		$this->init_admin();
@@ -86,6 +91,7 @@ class Easy_Notes
 		$this->admin = new Easy_Notes_Admin(
 			$this->get_plugin_name(),
 			$this->get_plugin_url(),
+			$this->get_version(),
 			new Easy_Notes_Options( 'easy_notes' )
 		);
 	}
@@ -166,6 +172,16 @@ class Easy_Notes
 	public function get_plugin_path(): string
 	{
 		return $this->plugin_path;
+	}
+
+	/**
+	 * Get plugin version
+	 * 
+	 * @return string Plugin version
+	 */
+	public function get_version(): string
+	{
+		return $this->plugin_version;
 	}
 
 	/**
