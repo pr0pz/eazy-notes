@@ -39,7 +39,7 @@
 	.premium {
 		padding: .75rem;
 		border-radius: .5rem;
-		border: 1px solid rgb(0 0 0 / .25);
+		border: 1px solid;
 		position: relative;
 		cursor: not-allowed;
 		opacity: .65;
@@ -56,7 +56,7 @@
 			position: absolute;
 			top:0;
 			right:0;
-			background: #333;
+			background: linear-gradient(to top right, #333, #777);
 			color: #fff;
 			padding: .1rem .5rem;
 			border-bottom-left-radius: .5rem;

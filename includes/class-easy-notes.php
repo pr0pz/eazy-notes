@@ -2,12 +2,6 @@
 /**
  * The core plugin class.
  *
- * This is used to define internationalization, admin-specific hooks, and
- * public-facing site hooks.
- *
- * Also maintains the unique identifier of this plugin as well as the current
- * version of the plugin.
- *
  * @package Easy_Notes
  * @subpackage Easy_Notes/includes
  * @version 1.0.0
@@ -28,20 +22,11 @@ class Easy_Notes
 	/** Plugin name. */
 	protected string $plugin_name;
 
-	/** Plugin ID - Generated from $plugin_name */
-	protected string $plugin_id;
-
-	/** Plugin slug - Generated from $plugin_id */
-	protected string $plugin_slug;
-
 	/** Plugin path on server. */
 	protected string $plugin_path;
 
 	/** Plugin url path on server. */
 	protected string $plugin_url;
-
-	/** Current plugin version. */
-	protected string $version;
 
 	/**
 	 * Core plugin functionality.
@@ -49,17 +34,12 @@ class Easy_Notes
 	public function __construct(
 		string $plugin_name,
 		string $plugin_path,
-		string $plugin_url,
-		string $version
+		string $plugin_url
 	)
 	{
 		$this->plugin_name = $plugin_name;
-		$this->version = $version;
-		$this->plugin_url = $plugin_url;
 		$this->plugin_path = $plugin_path;
-
-		$this->plugin_id = sanitize_title_with_dashes( $this->get_plugin_name() );
-		$this->plugin_slug = \str_replace( '-', '_', $this->get_plugin_id() );
+		$this->plugin_url = $plugin_url;
 
 		$this->load_dependencies();
 		$this->init_admin();
@@ -70,17 +50,10 @@ class Easy_Notes
 	/**
 	 * Load the required dependencies for this plugin.
 	 *
-	 * Include the following files that make up the plugin:
-	 *
-	 * - Easy_Notes_Loader. Orchestrates the hooks of the plugin.
-	 * - Easy_Notes_i18n. Defines internationalization functionality.
-	 * - Easy_Notes_Admin. Defines all hooks for the admin area.
-	 * - Easy_Notes_Public. Defines all hooks for the public side of the site.
-	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 */
-	private function load_dependencies()
+	private function load_dependencies(): void
 	{
 		/**
 		 * The class responsible for orchestrating the actions and filters of the core plugin.
@@ -108,12 +81,11 @@ class Easy_Notes
 	/**
 	 * Init Admin class
 	 */
-	private function init_admin()
+	private function init_admin(): void
 	{
 		$this->admin = new Easy_Notes_Admin(
 			$this->get_plugin_name(),
 			$this->get_plugin_url(),
-			$this->get_plugin_path(),
 			new Easy_Notes_Options( 'easy_notes' )
 		);
 	}
@@ -123,7 +95,7 @@ class Easy_Notes
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
 	 */
-	private function define_admin_hooks()
+	private function define_admin_hooks(): void
 	{
 		$this->loader->add_action( 'init', $this->get_admin(), 'load_plugin_textdomain' );
 		$this->loader->add_action( 'admin_init', $this->get_admin(), 'register_settings' );
@@ -144,7 +116,7 @@ class Easy_Notes
 	 * Register all of the hooks related to the public-facing functionality
 	 * of the plugin.
 	 */
-	private function define_public_hooks()
+	private function define_public_hooks(): void
 	{
 		$plugin_post = new Easy_Notes_Post( $this->get_admin() );
 
@@ -160,7 +132,7 @@ class Easy_Notes
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 */
-	public function run()
+	public function run(): void
 	{
 		$this->loader->run();
 	}
@@ -174,26 +146,6 @@ class Easy_Notes
 	public function get_plugin_name(): string
 	{
 		return $this->plugin_name;
-	}
-
-	/**
-	 * The id of the plugin, generated from the name.
-	 *
-	 * @return string The name of the plugin.
-	 */
-	public function get_plugin_id(): string
-	{
-		return $this->plugin_id;
-	}
-
-	/**
-	 * The slug of the plugin, generated from the id.
-	 *
-	 * @return string The name of the plugin.
-	 */
-	public function get_plugin_slug(): string
-	{
-		return $this->plugin_slug;
 	}
 
 	/**
@@ -219,30 +171,10 @@ class Easy_Notes
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @return Easy_Notes_Loader Orchestrates the hooks of the plugin.
-	 */
-	public function get_loader(): Easy_Notes_Loader
-	{
-		return $this->loader;
-	}
-
-	/**
-	 * The reference to the class that orchestrates the hooks with the plugin.
-	 *
 	 * @return Easy_Notes_Admin Orchestrates the hooks of the plugin.
 	 */
 	public function get_admin(): Easy_Notes_Admin
 	{
 		return $this->admin;
-	}
-
-	/**
-	 * Retrieve the version number of the plugin.
-	 *
-	 * @return string The version number of the plugin.
-	 */
-	public function get_version(): string
-	{
-		return $this->version;
 	}
 }

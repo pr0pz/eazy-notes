@@ -1,6 +1,6 @@
 <?php
 /**
- * Class managing the post type and it's features
+ * Class managing the post type and it's features.
  *
  * @package Easy_Notes
  * @subpackage Easy_Notes/includes
@@ -27,7 +27,7 @@ class Easy_Notes_Post
 	/**
 	 * Register custom post type
 	 */
-	public function create_post_type()
+	public function create_post_type(): void
 	{
 		$note_name = $this->get_admin()->get_note_name();
 		$note_name_plural = $this->get_admin()->get_note_name_plural();
@@ -138,14 +138,14 @@ class Easy_Notes_Post
 	/**
 	 * Add noindex + nofollow to our post type
 	 */
-	public function add_noindex_nofollow_to_head()
+	public function add_noindex_nofollow_to_head(): void
 	{
 		global $post;
 		if (
 			empty( $post ) ||
 			empty( $post->post_type ) ||
 			$post->post_type !== $this->get_admin()->get_post_type() ||
-			!$this->get_admin()->get_option( 'search_engine_visibility' )
+			!$this->get_admin()->get_option( 'hide_from_search_engines' )
 		) return;
 
 		echo '<meta name="robots" content="noindex, nofollow" />';
@@ -160,6 +160,7 @@ class Easy_Notes_Post
 	public function randomize_slug_on_post_save( array $data ): array
 	{
 		if (
+			empty( $data['post_type'] ) ||
 			$data['post_type'] !== $this->get_admin()->get_post_type() ||
 			!empty( $data['post_name'] )
 		) return $data;

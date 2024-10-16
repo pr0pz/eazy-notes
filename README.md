@@ -1,114 +1,92 @@
-=== Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
-Donate link: http://example.com/
-Tags: comments, spam
-Requires at least: 3.0.1
-Tested up to: 3.4
-Stable tag: 4.3
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+# __Easy Notes Lite__
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+![Made for WordPress](https://img.shields.io/static/v1?label&message=WP&color=0073aa&logo=wordpress&logoColor=fff)
+![Minimum PHP version: 8.0](https://img.shields.io/static/v1?label&labelColor=777&message=>=5.0.0&color=0073aa&logo=wordpress&logoColor=fff)
+![Made with PHP](https://img.shields.io/static/v1?label&message=PHP&color=777BB3&logo=php&logoColor=fff)
+![Minimum PHP version: 8.0](https://img.shields.io/static/v1?label&labelColor=777&message=>=8.0.0&color=777BB3&logo=php&logoColor=fff)
 
-== Description ==
+## __A simple pastebin-like plugin for WordPress: share notes/information via custom URLs.__
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
+_Like it? I'd appreciate the support :)_
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+[![Watch on Twitch](https://img.shields.io/static/v1?label=Watch%20on&message=Twitch&color=bf94ff&logo=twitch&logoColor=fff)](https://propz.de/twitch/)
+[![Join on Discord](https://img.shields.io/static/v1?label=Join%20on&message=Discord&color=7289da&logo=discord&logoColor=fff)](https://propz.de/discord/)
+[![Donate on Ko-Fi](https://img.shields.io/static/v1?label=Donate%20on&message=Ko-Fi&color=ff5f5f&logo=kofi&logoColor=fff)](https://propz.de/kofi/)
+[![Follow on Twitter](https://img.shields.io/static/v1?label=Follow%20on&message=Twitter&color=1DA1F2&logo=twitter&logoColor=fff)](https://propz.de/twitter/)
 
-A few notes about the sections above:
+### __Description__
 
-*   "Contributors" is a comma separated list of wp.org/wp-plugins.org usernames
-*   "Tags" is a comma separated list of tags that apply to the plugin
-*   "Requires at least" is the lowest version that the plugin will work on
-*   "Tested up to" is the highest version that you've *successfully used to test the plugin*. Note that it might work on
-higher versions... this is just the highest one you've verified.
-*   Stable tag should indicate the Subversion "tag" of the latest stable version, or "trunk," if you use `/trunk/` for
-stable.
+**Easy Notes Lite** is a simple pastebin-style plugin for WordPress that allows you to share all kinds of information in the form of notes with the world. When a note is created, a random URL is automatically generated, ensuring it cannot be easily guessed. You can also customize the URL yourself if desired.
 
-    Note that the `readme.txt` of the stable tag is the one that is considered the defining one for the plugin, so
-if the `/trunk/readme.txt` file says that the stable tag is `4.3`, then it is `/tags/4.3/readme.txt` that'll be used
-for displaying information about the plugin.  In this situation, the only thing considered from the trunk `readme.txt`
-is the stable tag pointer.  Thus, if you develop in trunk, you can update the trunk `readme.txt` to reflect changes in
-your in-development version, without having that information incorrectly disclosed about the current stable version
-that lacks those changes -- as long as the trunk's `readme.txt` points to the correct stable tag.
+### __Features__
 
-    If no stable tag is provided, it is assumed that trunk is stable, but you should specify "trunk" if that's where
-you put the stable version, in order to eliminate any doubt.
+- Share any kind of information via secure, random URLs with your clients/visitors.
+- Notes can contain text, images, audio, video, code, or entire pages.
+- Fully compatible with all major page builders and of course with the Block Editor.
+- Automatically hides notes from search engines and excludes them from internal search results.
+- REST API is restricted to logged-in users with appropriate capabilities.
+- Generate traffic to your website by sharing a custom link back to your site.
 
-== Installation ==
+### __Tested with:__
+- ✅ All twenty-* themes
+- ✅ Divi Theme
+- ✅ Elementor
+- ✅ Divi Builder
+- ✅ Bricks Builder
 
-This section describes how to install the plugin and get it working.
+### __Instructions__
 
-e.g.
+1. Download the latest release
+2. Go to your wp-admin/plugins.php and install the plugin
+3. Configure your settings under ‘Easy Notes Lite’ in the admin dashboard.
+4. Have fun!
 
-1. Upload `plugin-name.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
+### __Frequently Asked Questions__
 
-== Frequently Asked Questions ==
+<details>
+<summary>Can I change the generated URL?</summary>
+Yes, you can customize the note URL after the note has been created.
+</details>
 
-= A question that someone might have =
+<details>
+<summary>How can I ensure the notes are secure?</summary>
+Yes, you can customize the note URL after the note has been created.
 
-An answer to that question.
+</details>
 
-= What about foo bar? =
+<details>
+<summary>How can I ensure the notes are secure?</summary>
+The plugin generates random URLs that are difficult to guess. You can also customize the URL length for added security.
+</details>
 
-Answer to foo bar dilemma.
+<details>
+<summary>Does this plugin support the block editor (Gutenberg)?</summary>
+Yes! Easy Notes Lite is fully compatible with the block editor as well as other page builders.
+</details>
 
-== Screenshots ==
+<details>
+<summary>Is this plugin compatible with elementor? Divi builder? Bricks?</summary>
+Yes! Easy Notes Lite is fully compatible with all major page builders. Having problem with your prefered builder? Please open a request.
+</details>
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+<details>
+<summary>Are there premium features available?</summary>
+Yes! The premium version of this plugin adds features like:
+- Burn after reading
+- Expire notes after a set date or time
+- Automatically delete expired or burned notes
+- Enable comments on notes
+- Assign notes to specific users or make them available only to logged-in users
+</details>
 
-== Changelog ==
+### __Found any Bugs?__
 
-= 1.0 =
-* A change since the previous version.
-* Another change.
+If you find any bugs/errors, feel free to [post an issue](https://github.com/pr0pz/easy-notes-lite/issues).
 
-= 0.5 =
-* List versions from most recent at top to oldest at bottom.
+### __License__
 
-== Upgrade Notice ==
+![License: GPLv2](https://img.shields.io/static/v1?label=License&message=GNU&color=a32d2a&logo=gnu&logoColor=fff)
 
-= 1.0 =
-Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
+_That's it!_
 
-= 0.5 =
-This version fixes a security related bug.  Upgrade immediately.
-
-== Arbitrary section ==
-
-You may provide arbitrary sections, in the same format as the ones above.  This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation."  Arbitrary sections will be shown below the built-in sections outlined above.
-
-== A brief Markdown Example ==
-
-Ordered list:
-
-1. Some feature
-1. Another feature
-1. Something else about the plugin
-
-Unordered list:
-
-* something
-* something else
-* third thing
-
-Here's a link to [WordPress](http://wordpress.org/ "Your favorite software") and one to [Markdown's Syntax Documentation][markdown syntax].
-Titles are optional, naturally.
-
-[markdown syntax]: http://daringfireball.net/projects/markdown/syntax
-            "Markdown is what the parser uses to process much of the readme file"
-
-Markdown uses email style notation for blockquotes and I've been told:
-> Asterisks for *emphasis*. Double it up  for **strong**.
-
-`<?php code(); // goes in backticks ?>`
+___Be excellent to each other. And, Party on, dudes!___

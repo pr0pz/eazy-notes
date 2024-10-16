@@ -2,9 +2,6 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
- *
  * @package Easy_Notes
  * @subpackage Easy_Notes/admin
  * @version 1.0.0
@@ -23,16 +20,10 @@ class Easy_Notes_Admin
 	protected string $plugin_id;	
 
 	/** Plugin slug. */
-	protected string $plugin_slug;
-
-	/** Plugin slug. */
 	protected string $plugin_url;	
 
-	/** Plugin path. */
-	protected string $plugin_path;	
-
 	/** PLugin Options Instance. */
-	private Easy_Notes_Options $plugin_options;
+	protected Easy_Notes_Options $plugin_options;
 
 	/**
 	 * Constructor
@@ -44,22 +35,19 @@ class Easy_Notes_Admin
 	public function __construct(
 		string $plugin_name,
 		string $plugin_url,
-		string $plugin_path,
 		Easy_Notes_Options $plugin_options
 	)
 	{
 		$this->plugin_name = $plugin_name;
 		$this->plugin_id = sanitize_title_with_dashes( $plugin_name );
-		$this->plugin_slug = \str_replace( '-', '_', $this->plugin_id );
 		$this->plugin_url = $plugin_url;
-		$this->plugin_path = $plugin_path;
 		$this->plugin_options = $plugin_options;
 	}
 
 	/**
 	 * Register settings
 	 */
-	public function register_settings()
+	public function register_settings(): void
 	{
 		register_setting(
 			$this->plugin_options->get_option_name(),
@@ -73,7 +61,7 @@ class Easy_Notes_Admin
 	/**
 	 * Add Submenu page for Settings Menu
 	 */
-	public function add_submenu_page()
+	public function add_submenu_page(): void
 	{
 		add_submenu_page(
 			'options-general.php',
@@ -88,7 +76,7 @@ class Easy_Notes_Admin
 	/**
 	 * Render Settings page
 	 */
-	public function render_settings_page()
+	public function render_settings_page(): void
 	{
 		if ( ! current_user_can( apply_filters( 'easy_notes_settings_page_capability', 'manage_options' ) ) ) return;
 		?>
@@ -106,7 +94,7 @@ class Easy_Notes_Admin
 	/**
 	 * Render Settings section
 	 */
-	public function render_settings_sections()
+	public function render_settings_sections(): void
 	{
 		foreach( $this->plugin_options->get_settings_sections() as $section_id => $section )
 		{
@@ -140,7 +128,7 @@ class Easy_Notes_Admin
 	/**
 	 * Render single settings field
 	 */
-	public function render_settings_field( array $field )
+	public function render_settings_field( array $field ): void
 	{
 		// Setup and sanitize all vars
 		$name = esc_attr( $field['name'] );
@@ -331,33 +319,13 @@ class Easy_Notes_Admin
 	}
 
 	/**
-	 * Get the plugin slug
-	 * 
-	 * @return string Plugin slug.
-	 */
-	public function get_plugin_slug(): string
-	{
-		return $this->plugin_slug;
-	}
-
-	/**
 	 * Get the plugin url
 	 * 
-	 * @return string Plugin slug.
+	 * @return string Plugin url.
 	 */
 	public function get_plugin_url(): string
 	{
 		return $this->plugin_url;
-	}
-
-	/**
-	 * Get the plugin path
-	 * 
-	 * @return string Plugin path.
-	 */
-	public function get_plugin_path(): string
-	{
-		return $this->plugin_path;
 	}
 
 	/**
@@ -427,7 +395,7 @@ class Easy_Notes_Admin
 	 * @param string $post_type Post type.
 	 * @return bool
 	 */
-	public function maybe_enable_block_editor( bool $current_status, string $post_type )
+	public function maybe_enable_block_editor( bool $current_status, string $post_type ): bool
 	{
 		if (
 			!$this->get_option( 'enable_block_editor' ) &&
@@ -445,7 +413,7 @@ class Easy_Notes_Admin
 	 * @param WP_REST_Request $request
 	 * @return mixed Result if logged in
 	 */
-	public function restrict_rest_api_access( mixed $result, \WP_REST_Server $server, \WP_REST_Request $request )
+	public function restrict_rest_api_access( mixed $result, \WP_REST_Server $server, \WP_REST_Request $request ): mixed
 	{
 		if ( !\str_contains( $request->get_route(), '/' . sanitize_title_with_dashes( $this->get_note_name_plural() ) ) ) return $result;
 
@@ -507,7 +475,7 @@ class Easy_Notes_Admin
 	/**
 	 * Load in the translate folder.
 	 */
-	public function load_plugin_textdomain()
+	public function load_plugin_textdomain(): void
 	{
 		load_plugin_textdomain(
 			'easy-notes',
@@ -519,7 +487,7 @@ class Easy_Notes_Admin
 	/**
 	 * Register the stylesheets for the admin area.
 	 */
-	public function enqueue_styles()
+	public function enqueue_styles(): void
 	{
 		$screen = get_current_screen();
 		if (

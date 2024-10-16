@@ -16,13 +16,12 @@ class Easy_Notes_Activator
 	/**
 	 * Activate function
 	 */
-	public static function activate( string $plugin_id )
+	public static function activate(): void
 	{
-		$easy_notes = $plugin_id . '/' . $plugin_id .'.php';
-		if ( is_plugin_active( $easy_notes ) )
+		// Prevent plugin activation if premium plugin is active
+		if ( is_plugin_active( 'easy-notes/easy-notes.php' ) )
 		{
-			// Zeige eine Fehlermeldung und verhindere die Aktivierung
-			deactivate_plugins( $plugin_id . '-lite/' . $plugin_id .'.php' );
+			deactivate_plugins( 'easy-notes-lite/easy-notes.php' );
 			
 			wp_die(
 				__( "You can't activate this plugin while the premium version is active.", 'easy-notes' ),

@@ -16,7 +16,7 @@ class Easy_Notes_Deactivator
 	/**
 	 * Deactivate function
 	 */
-	public static function deactivate()
+	public static function deactivate(): void
 	{
 		add_action( 'init', 'flush_rewrite_rules', 20 );
 	}

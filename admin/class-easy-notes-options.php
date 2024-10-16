@@ -1,6 +1,6 @@
 <?php
 /**
- * All options are defined here.
+ * Class managing all plugin options.
  *
  * @package Easy_Notes
  * @subpackage Easy_Notes/admin
@@ -14,7 +14,7 @@ namespace Propz\Easy_Notes_Lite;
 class Easy_Notes_Options
 {
 	/** Plugin slug */
-	private string $plugin_slug;
+	protected string $plugin_slug;
 
 	/**
 	 * Constructor
