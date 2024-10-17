@@ -194,9 +194,9 @@ class Easy_Notes_Options
 				'description'	=>
 					__( "Customize your email subject and message.\nUse the following codes as replacement variables:", 'easy-notes-lite' )
 					. "
-					<code>[website_name] -> " . __( 'Your websites name', 'easy-notes' ) . "</code>
-					<code>[permalink] -> " . __( '[note_name] permalink', 'easy-notes' ) . "</code>
-					<code>[title] -> " . __( '[note_name] title', 'easy-notes' ) . "</code>",
+					<code>[website_name] -> " . __( 'Your websites name', 'easy-notes-lite' ) . "</code>
+					<code>[permalink] -> " . __( '[note_name] permalink', 'easy-notes-lite' ) . "</code>
+					<code>[title] -> " . __( '[note_name] title', 'easy-notes-lite' ) . "</code>",
 				'premium'		=> \true
 			]
 		];
