@@ -15,6 +15,8 @@ class Easy_Notes_Deactivator
 {
 	/**
 	 * Deactivate function
+	 * 
+	 * @return void
 	 */
 	public static function deactivate(): void
 	{

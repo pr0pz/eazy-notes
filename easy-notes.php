@@ -12,8 +12,9 @@
  * Plugin URI:        https://propz.de/plugins-tools/easy-notes/
  * Description:       A simple and secure way to share notes with the world. A little bite like pastebin, but inside your WordPress website.
  * Version:           1.0.0
- * Requires at least: 5.0.0
- * Requires PHP:      8.0
+ * Requires at least: 5.3
+ * Tested up to:      6.6.2
+ * Requires PHP:      7.4
  * Author:            Wellington Estevo <info@propz.de>
  * Author URI:        https://propz.de
  * License:           GPL v3 or later
@@ -30,6 +31,11 @@ namespace Propz\Easy_Notes_Lite;
 \define( 'EASY_NOTES_LITE_VERSION', '1.0.0' );
 \define( 'EASY_NOTES_LITE_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 \define( 'EASY_NOTES_LITE_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+
+	/**
+	 * Polyfils
+	 */
+	require EASY_NOTES_LITE_PLUGIN_PATH . 'includes/easy-notes-polyfills.php';
 
 	/**
 	 * On plugin activate

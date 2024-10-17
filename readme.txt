@@ -1,9 +1,9 @@
 ### Easy Notes Lite
 Contributors: propz
 Tags: notes, pastebin, private notes, share notes, secure note
-Requires at least: 5.0.0
+Requires at least: 5.3
 Tested up to: 6.6.2
-Requires PHP: 8.0
+Requires PHP: 7.4
 Stable tag: 1.0.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html

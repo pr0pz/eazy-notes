@@ -57,6 +57,8 @@ class Easy_Notes
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
+	 * 
+	 * @return void
 	 */
 	private function load_dependencies(): void
 	{
@@ -85,6 +87,8 @@ class Easy_Notes
 
 	/**
 	 * Init Admin class
+	 * 
+	 * @return void
 	 */
 	private function init_admin(): void
 	{
@@ -100,6 +104,8 @@ class Easy_Notes
 	/**
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
+	 * 
+	 * @return void
 	 */
 	private function define_admin_hooks(): void
 	{
@@ -121,6 +127,8 @@ class Easy_Notes
 	/**
 	 * Register all of the hooks related to the public-facing functionality
 	 * of the plugin.
+	 * 
+	 * @return void
 	 */
 	private function define_public_hooks(): void
 	{
@@ -137,6 +145,8 @@ class Easy_Notes
 
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
+	 * 
+	 * @return void
 	 */
 	public function run(): void
 	{

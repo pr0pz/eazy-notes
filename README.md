@@ -1,9 +1,7 @@
 # __Easy Notes Lite__
 
-![Made for WordPress](https://img.shields.io/static/v1?label&message=WP&color=0073aa&logo=wordpress&logoColor=fff)
-![Minimum PHP version: 8.0](https://img.shields.io/static/v1?label&labelColor=777&message=>=5.0.0&color=0073aa&logo=wordpress&logoColor=fff)
-![Made with PHP](https://img.shields.io/static/v1?label&message=PHP&color=777BB3&logo=php&logoColor=fff)
-![Minimum PHP version: 8.0](https://img.shields.io/static/v1?label&labelColor=777&message=>=8.0.0&color=777BB3&logo=php&logoColor=fff)
+![Made for WordPress 5.3 and above](https://img.shields.io/static/v1?label&message=>=%205.3&color=0073aa&logo=wordpress&logoColor=fff)
+![Minimum PHP version: 7.4](https://img.shields.io/static/v1?label&message=>=%207.4&color=777BB3&logo=php&logoColor=fff)
 
 ## __A simple pastebin-like plugin for WordPress: share notes/information via custom URLs.__
 

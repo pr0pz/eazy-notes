@@ -51,6 +51,10 @@ class Easy_Notes_Admin
 
 	/**
 	 * Register settings
+	 * 
+	 * Action: admin_init
+	 * 
+	 * @return void
 	 */
 	public function register_settings(): void
 	{
@@ -65,6 +69,10 @@ class Easy_Notes_Admin
 
 	/**
 	 * Add Submenu page for Settings Menu
+	 * 
+	 * Action: admin_menu
+	 * 
+	 * @return void
 	 */
 	public function add_submenu_page(): void
 	{
@@ -81,6 +89,10 @@ class Easy_Notes_Admin
 
 	/**
 	 * Render Settings page
+	 * 
+	 * Context: add_submenu_page render callback
+	 * 
+	 * @return void
 	 */
 	public function render_settings_page(): void
 	{
@@ -99,6 +111,10 @@ class Easy_Notes_Admin
 
 	/**
 	 * Render Settings section
+	 * 
+	 * Context: render_settings_page
+	 * 
+	 * @return void
 	 */
 	public function render_settings_sections(): void
 	{
@@ -133,119 +149,130 @@ class Easy_Notes_Admin
 
 	/**
 	 * Render single settings field
+	 * 
+	 * Context: render_settings_sections
+	 * 
+	 * @return void
 	 */
 	public function render_settings_field( array $field ): void
 	{
 		// Setup and sanitize all vars
 		$name = esc_attr( $field['name'] );
-		$input_type = esc_attr( $field['type'] );
-	
-		// ID, Name, Label, Description
-		$input_id = $this->plugin_options->get_option_prefix() . '_' . $name;
-		$input_name = $this->plugin_options->get_option_name() . '[' . $name . ']';
-		$input_label = wp_kses_post( \nl2br( $this->replace_settings_field_placeholders( $field['label'] ) ) );
-		$input_description = !empty( $field['description'] ) ? '<p class="description">' . wp_kses_post( \nl2br( $this->replace_settings_field_placeholders( $field['description'] ) ) ) . '</p>' : '';
+		$field_type = !empty( $field['type'] ) ? esc_attr( $field['type'] ) : 'checkbox';
 
-		// Values, min, max
-		$input_value = $field['value'];
-		$input_min = !empty( $field['min'] ) ? ' min="' . esc_attr( $field['min'] ) . '"' : '';
-		$input_max = !empty( $field['max'] ) ? ' max="' . esc_attr( $field['max'] ) . '"' : '';
-		$current_value = $this->get_option( $name );
+		// ID, Name, Label, Description
+		$field_id = esc_attr( $this->plugin_options->get_option_prefix() . '_' . $name );
+		$field_name = esc_attr( $this->plugin_options->get_option_name() . '[' . $name . ']' );
+
+		// Label and description
+		$field_label_classes = esc_attr( 'form-label form-label-' . $field_type );
+		$field_label = !empty( $field['label'] ) ? '<label for="' . $field_id . '" class="' . $field_label_classes . '">' . \nl2br( $this->replace_settings_field_placeholders( $field['label'] ) ) . '</label>' : '';
+		$field_description = !empty( $field['description'] ) ? '<p class="description">' . \nl2br( $this->replace_settings_field_placeholders( $field['description'] ) ) . '</p>' : '';
+
+		// Values (escaped later)
+		$field_value = $field_type === 'checkbox' ? 1 : $field['value'];
+		$field_value_current = $this->get_option( $name );
 
 		// Classes
-		$input_class = !empty( $field['class'] ) ? ' ' . sanitize_html_class( $field['class'] ) : '';
-		$input_wrapper_class = !empty( $field['premium'] ) ? ' premium' : '';
+		$field_classes = esc_attr( 'form-control form-control-' . $field_type . ( !empty( $field['class'] ) ? ' ' . $field['class'] : '' ) );
+		$field_wrapper_classes = esc_attr( 'form-group form-group-' . $field_type . ( !empty( $field['premium'] ) ? ' premium' : '' ) );
+
+		// Build Default Input
+		$field_input = '<input type="' . $field_type . '" id="' . $field_id . '" name="' . $field_name . '" class="' . $field_classes . '"';
+		// Input value
+		// If value is Array: select options, radio groups
+		$field_input .= !\is_array( $field_value ) ? ' value="' . esc_attr( $field_value ) . '"' : '';
+		// Input Specials
+		$field_input .= $field_type === 'checkbox' ? checked( 1, $field_value_current, \false ) : '';
+		$field_input .= disabled( 1, !empty( $field['disabled'] ), \false );
+		$field_input .= !empty( $field['min'] ) ? ' min="' . esc_attr( $field['min'] ) . '"' : '';
+		$field_input .= !empty( $field['max'] ) ? ' max="' . esc_attr( $field['max'] ) . '"' : '';
+		// Wrap it up
+		$field_input .= '>';
 
 		$output = '';
 
-		switch ( $input_type )
+		switch ( $field_type )
 		{
-			case 'checkbox':
-				$output = '
-				<div class="form-check form-input-wrapper' . $input_wrapper_class . '">
-					<input type="' . $input_type . '" id="' . $input_id . '" name="' . $input_name . '" class="form-check-input' . $input_class . '" value="1"' . checked( 1, $current_value, \false ) . '>
-					<label for="' . $input_id . '" class="form-check-label">' . $input_label . '</label>
-					' . $input_description . '
-				</div>';
-				break;
-
 			case 'textarea':
-				$output = '
-				<div class="form-group form-input-wrapper' . $input_wrapper_class . '">
-					<label for="' . $input_id . '" class="form-label">' . $input_label . '</label>
-					<textarea id="' . $input_id . '" name="' . $input_name . '" rows="' . ( !empty( $field['rows'] ) ? $field['rows'] : 4 ) . '" class="form-control' . $input_class . '">'
-						. wp_kses_post( $current_value ) . '
-					</textarea>
-					' . $input_description . '
-				</div>';
+				$output .= $field_label;
+				$output .= '<textarea id="' . $field_id . '" name="' . $field_name . '" class="' . $field_classes . '"';
+				// Input Specials
+				$output .= !empty( $field['rows'] ) ? ' rows="' . esc_attr( $field['rows'] ) . '"' : '';
+				$output .= !empty( $field['cols'] ) ? ' cols="' . esc_attr( $field['cols'] ) . '"' : '';
+				$output .= disabled( 1, !empty( $field['disabled'] ), \false );
+				// Wrap it up
+				$output .= '>' . $field_value_current . '</textarea>' . $field_description;
 				break;
 
 			case 'radio':
-				$output = '
-				<div class="form-group form-input-wrapper' . $input_wrapper_class . '">
-					<fieldset>
-						<legend>' . $input_label . '</legend>
-				';
-				foreach( $input_value as $radio_id => $radio )
+				$output .= '<fieldset><legend>' . $field_label . '</legend>';
+				foreach( $field_value as $radio_id => $radio )
 				{
-					$output .= '
-					<div class="form-check">
-						<input type="' . $input_type . '" id="' . $radio_id . '" name="' . $input_name .'" value="' . esc_attr( $radio['value'] ) . '" class="form-check-input' . $input_class . '"' . checked( $radio['value'], $current_value, \false ) . '>
-						<label for="' . $radio_id . '" class="form-check-label">' . wp_kses_post( \nl2br( $this->replace_settings_field_placeholders( $radio['label'] ) ) ) . '</label>
-					</div>';
+					// Open it up
+					$output .= '<div class="' . $field_wrapper_classes . '">';
+					// Input
+					$output .= '<input type="' . $field_type . '" id="' . esc_attr( $radio_id ) . '" name="' . $field_name .'" value="' . esc_attr( $radio['value'] ) . '" class="' . $field_classes . '"';
+					// Input Specials
+					$output .= checked( $radio['value'], $field_value_current, \false );
+					$output .= disabled( 1, !empty( $radio['disabled'] ), \false );
+					$output .= '>';
+					// Label for subelement
+					$output .= '<label for="' . $radio_id . '" class="' . $field_label_classes . '">' . \nl2br( $this->replace_settings_field_placeholders( $radio['label'] ) ) . '</label>';
+					// Wrap it up
+					$output .= '</div>';
 				}
-				$output .= $input_description . '
-					</fieldset>
-				</div>';
+				$output .= $field_description . '</fieldset>';
 				break;
 
 			case 'select':
-				$output = '
-				<div class="form-group form-input-wrapper' . $input_wrapper_class . '">
-					<label for="' . $input_id . '" class="form-select-label">' . $input_label . '</label>
-					<select id="' . $input_id . '" name="' . $input_name . '" class="form-select' . $input_class . '">';
-
-				foreach( $input_value as $option )
+				// Label
+				$output .= $field_label;
+				// Input
+				$output .= '<select id="' . $field_id . '" name="' . $field_name . '" class="' . $field_classes . '">';
+				foreach( $field_value as $option )
 				{
-					$output .= '<option value="' . esc_attr( $option['value'] ) . '" ' . selected( $current_value, $option['value'], \false ) . '>' . esc_html( $option['label'] ) . '</option>';
+					// Input
+					$output .= '<option value="' . esc_attr( $option['value'] ) . '"';
+					// Input Specials
+					$output .= selected( $field_value_current, $option['value'], \false );
+					$output .= disabled( 1, !empty( $option['disabled'] ), \false );
+					// Wrap it up
+					$output .= '>' . esc_html( $option['label'] ) . '</option>';
 				}
-
-				$output .= '
-					</select>
-					' . $input_description . '
-				</div>';
+				// Wrap it up
+				$output .= '</select>' . $field_description;
 				break;
 
-			case 'number':
-			case 'date':
-				$output = '
-				<div class="form-group form-input-wrapper' . $input_wrapper_class . '">
-					<label for="' . $input_id . '" class="form-label">' . $input_label . '</label>
-					<input type="' . $input_type . '" id="' . $input_id . '" name="' . $input_name . '" value="' . esc_attr( $current_value ) . '" class="form-control' . $input_class . '"' . $input_min . $input_max . '>
-					' . $input_description . '
-				</div>';
-				break;
-					
 			case 'hidden':
 				$output = '';
 				break;
 
+			case 'checkbox':
+				$output .= $field_input;
+				$output .= $field_label;
+				$output .= $field_description;
+				break;
+
 			default:
-				$output = '
-				<div class="form-group form-input-wrapper' . $input_wrapper_class . '">
-					<label for="' . $input_id . '" class="form-label">' . $input_label . '</label>
-					<input type="' . $input_type . '" id="' . $input_id . '" name="' . $input_name . '" value="' . esc_attr( $current_value ) . '" class="form-control' . $input_class . '">
-					' . $input_description . '
-				</div>';
+				$output .= $field_label;
+				$output .= $field_input;
+				$output .= $field_description;
 				break;
 		}
 
-		echo wp_kses_post( $output );
+		// Wrap it up
+		$output = !empty( $output ) ? '<div class="' . $field_wrapper_classes . '">' . $output . '</div>' : '';
+
+		echo wp_kses( $output, $this->plugin_options->get_allowed_html() );
 	}
 
 	/**
 	 * Sanitize the submitted options.
+	 * 
 	 * This method sanitizes the user input before the Settings API saves it to the database.
+	 * 
+	 * Context: sanitize_callback for register_setting
 	 *
 	 * @param array $input The raw input from the form.
 	 * @return array The sanitized options.
@@ -340,7 +367,7 @@ class Easy_Notes_Admin
 	 * Combine wp_parse_args with get_option to load new defaults:
 	 * https://stackoverflow.com/a/27516495/4371770
 	 * 
-	 * @return array All saved plugin options.
+	 * @return array All saved options.
 	 */
 	public function get_options(): array
 	{
@@ -359,7 +386,7 @@ class Easy_Notes_Admin
 	 * @param string $option_name Name of single option to retrieve
 	 * @return mixed Single options value
 	 */
-	public function get_option( string $option_name ): mixed
+	public function get_option( string $option_name )
 	{
 		$options = $this->get_options();
 		if (
@@ -372,6 +399,8 @@ class Easy_Notes_Admin
 
 	/**
 	 * Get Note name singular
+	 * 
+	 * @return string Post type name.
 	 */
 	public function get_post_type(): string
 	{
@@ -380,6 +409,8 @@ class Easy_Notes_Admin
 
 	/**
 	 * Get Note name singular
+	 * 
+	 * @return string Note name singular.
 	 */
 	public function get_note_name(): string
 	{
@@ -388,6 +419,8 @@ class Easy_Notes_Admin
 
 	/**
 	 * Get Note name singular
+	 * 
+	 * @return string Note name plural.
 	 */
 	public function get_note_name_plural(): string
 	{
@@ -397,9 +430,11 @@ class Easy_Notes_Admin
 	/**
 	 * Enable Gutenberg Editor
 	 * 
+	 * Filter: use_block_editor_for_post_type, gutenberg_can_edit_post_type
+	 * 
 	 * @param bool $current_status Current status if block editor is enable.
 	 * @param string $post_type Post type.
-	 * @return bool
+	 * @return bool Enable or not.
 	 */
 	public function maybe_enable_block_editor( bool $current_status, string $post_type ): bool
 	{
@@ -414,12 +449,14 @@ class Easy_Notes_Admin
 	/**
 	 * Restrict API access for logged in users
 	 * 
+	 * Filter: rest_pre_dispatch
+	 * 
 	 * @param mixed $result API request result.
 	 * @param WP_REST_Server $server
 	 * @param WP_REST_Request $request
 	 * @return mixed Result if logged in
 	 */
-	public function restrict_rest_api_access( mixed $result, \WP_REST_Server $server, \WP_REST_Request $request ): mixed
+	public function restrict_rest_api_access( $result, \WP_REST_Server $server, \WP_REST_Request $request )
 	{
 		if ( !\str_contains( $request->get_route(), '/' . sanitize_title_with_dashes( $this->get_note_name_plural() ) ) ) return $result;
 
@@ -452,6 +489,8 @@ class Easy_Notes_Admin
 	/**
 	 * Replace all settings fiel label and description placeholders
 	 * 
+	 * Context: render_settings_field
+	 * 
 	 * @param string $text Text to search replace
 	 * @return string Replaced text
 	 */
@@ -482,6 +521,10 @@ class Easy_Notes_Admin
 
 	/**
 	 * Load in the translate folder.
+	 * 
+	 * Action: init
+	 * 
+	 * @return void
 	 */
 	public function load_plugin_textdomain(): void
 	{
@@ -491,6 +534,10 @@ class Easy_Notes_Admin
 
 	/**
 	 * Register the stylesheets for the admin area.
+	 * 
+	 * Action: admin_enqueue_scripts
+	 * 
+	 * @return void
 	 */
 	public function enqueue_styles(): void
 	{

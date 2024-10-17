@@ -27,7 +27,7 @@ class Easy_Notes_Options
 	/**
 	 * Return all sections
 	 * 
-	 * @return array
+	 * @return array All settings sections.
 	 */
 	public function get_settings_sections(): array
 	{
@@ -47,7 +47,7 @@ class Easy_Notes_Options
 	/**
 	 * Get all settings fields
 	 * 
-	 * @return array
+	 * @return array All settings fields.
 	 */
 	public function get_settings_fields(): array
 	{
@@ -184,7 +184,7 @@ class Easy_Notes_Options
 				'class'			=> 'note-email',
 				'premium'		=> \true
 			],
-			'email_message' => [
+			'email_message' => [	
 				'label'			=> __( 'Email message (supports basic html)', 'easy-notes-lite' ),
 				'value'			=> __( "[website_name] just shared a Note with you:\n<a href='[permalink]' target='_blank'>[title]</a>", 'easy-notes-lite' ),
 				'type'			=> 'textarea',
@@ -194,9 +194,9 @@ class Easy_Notes_Options
 				'description'	=>
 					__( "Customize your email subject and message.\nUse the following codes as replacement variables:", 'easy-notes-lite' )
 					. "
-					<code>[website_name] " . __( 'Your websites name', 'easy-notes-lite' ) . "</code>
-					<code>[permalink] " . __( '[note_name] permalink', 'easy-notes-lite' ) . "</code>
-					<code>[title] " . __( '[note_name] title', 'easy-notes-lite' ) . "</code>",
+					<code>[website_name] -> " . __( 'Your websites name', 'easy-notes' ) . "</code>
+					<code>[permalink] -> " . __( '[note_name] permalink', 'easy-notes' ) . "</code>
+					<code>[title] -> " . __( '[note_name] title', 'easy-notes' ) . "</code>",
 				'premium'		=> \true
 			]
 		];
@@ -205,7 +205,7 @@ class Easy_Notes_Options
 	/**
 	 * Get all default values
 	 * 
-	 * @return array
+	 * @return array Default values.
 	 */
 	public function get_settings_defaults(): array
 	{
@@ -220,6 +220,8 @@ class Easy_Notes_Options
 
 	/**
 	 * Main option name.
+	 * 
+	 * @return string Option name.
 	 */
 	public function get_option_name(): string
 	{
@@ -228,9 +230,86 @@ class Easy_Notes_Options
 
 	/**
 	 * Prefix for each option.
+	 * 
+	 * @return string Option prefix.
 	 */
 	public function get_option_prefix(): string
 	{
 		return $this->plugin_slug;
+	}
+
+	/**
+	 * Get allowed html for kses function.
+	 * 
+	 * @return array All allowed html tags and atts.
+	 */
+	public function get_allowed_html(): array
+	{
+		$default_atts = [ 
+			'id' => [],
+			'class' => [],
+			'title' => [],
+			'style' => [],
+			'aria-label' => []
+		];
+		$input_atts = [
+			'name' => [],
+			'value' => [],
+			'placeholder' => [],
+			'label' => [],
+			'type' => [],
+			'checked' => [],
+			'selected' => [],
+			'disabled' => [],
+			'required' => [],
+			'readonly' => [],
+			'multiple' => [],
+			'min' => [],
+			'max' => [],
+			'minlength' => [],
+			'maxlength' => [],
+			'rows' => [],
+			'cols' => [],
+			'list' => [],
+			'size' => [],
+			'pattern' => [],
+			'step' => [],
+			'alt' => [],
+			'accept' => []
+		];
+		return [
+			'input' => \array_merge( $default_atts, $input_atts ),
+			'textarea' => \array_merge( $default_atts, $input_atts ),
+			'select' => \array_merge( $default_atts, $input_atts ),
+			'option' => \array_merge( $default_atts, $input_atts ),
+			'optgroup' => \array_merge( $default_atts, $input_atts ),
+			'label' => \array_merge( $default_atts, [ 'for' => [] ] ),
+			'a' => \array_merge(
+				$default_atts,
+				[ 'href' => [], 'target' => [], 'rel' => [] ]
+			),
+			'fieldset' => $default_atts,
+			'legend' => $default_atts,
+			'datalist' => $default_atts,
+			'div' => $default_atts,
+			'code' => $default_atts,
+			'table' => $default_atts,
+			'tr' => $default_atts,
+			'td' => $default_atts,
+			'p' => $default_atts,
+			'span' => $default_atts,
+			'strong' => $default_atts,
+			'b' => $default_atts,
+			'em' => $default_atts,
+			'i' => $default_atts,
+			'del' => $default_atts,
+			'strike' => $default_atts,
+			'u' => $default_atts,
+			'ul' => $default_atts,
+			'ol' => $default_atts,
+			'li' => $default_atts,
+			'br' => $default_atts,
+			'hr' => $default_atts,
+		];
 	}
 }

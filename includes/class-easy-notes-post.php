@@ -26,6 +26,10 @@ class Easy_Notes_Post
 
 	/**
 	 * Register custom post type
+	 * 
+	 * Action: init
+	 * 
+	 * @return void
 	 */
 	public function create_post_type(): void
 	{
@@ -128,6 +132,8 @@ class Easy_Notes_Post
 	/**
 	 * Check if the title needs to be hidden
 	 * 
+	 * Filter: pre_get_document_title, wp_title
+	 * 
 	 * @param string $title Post title as string.
 	 * @return string Maybe edited post title.
 	 */
@@ -157,6 +163,10 @@ class Easy_Notes_Post
 
 	/**
 	 * Add noindex + nofollow to our post type
+	 * 
+	 * Action: wp_head
+	 * 
+	 * @return void
 	 */
 	public function add_noindex_nofollow_to_head(): void
 	{
@@ -173,6 +183,8 @@ class Easy_Notes_Post
 
 	/**
 	 * Randomize post slug on save
+	 * 
+	 * Filter: wp_insert_post_data
 	 * 
 	 * @param array $data Post data.
 	 * @return array Post data with new slug.

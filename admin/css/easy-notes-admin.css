@@ -6,9 +6,8 @@
  * @version 1.0.0
  */
 
-.easy-notes-section {
-	td > fieldset > .form-group,
-	td > fieldset > .form-check {
+#easy_notes_options {
+	td > fieldset > .form-group {
 		margin-bottom: 1.25rem;
 	}
 
@@ -19,8 +18,11 @@
 		display: inline-block;
 	}
 
-	.form-control,
-	.form-select {
+	.form-group td {
+		padding: 0;
+	}
+
+	.form-control:not(.form-control-checkbox) {
 		display: block;
 	}
 
@@ -32,7 +34,7 @@
 		font-style: italic;
 	}
 
-	.form-check .description {
+	.form-group-checkbox .description {
 		margin-top: -2px !important;
 	}
 
@@ -46,7 +48,8 @@
 
 		input,
 		select,
-		textarea {
+		textarea,
+		label {
 			pointer-events: none;
 			opacity: .65;
 		}
