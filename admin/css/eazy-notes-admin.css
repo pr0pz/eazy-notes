@@ -1,12 +1,12 @@
 /**
  * Admin Styles
  *
- * @package Easy_Notes
- * @subpackage Easy_Notes/admin
+ * @package Eazy_Notes
+ * @subpackage Eazy_Notes/admin
  * @version 1.0.0
  */
 
-#easy_notes_options {
+#eazy_notes_options {
 	td > fieldset > .form-group {
 		margin-bottom: 1.25rem;
 	}
@@ -53,17 +53,25 @@
 			pointer-events: none;
 			opacity: .65;
 		}
+	}
 
-		&:before {
-			content: "Premium feature";
-			position: absolute;
-			top:0;
-			right:0;
-			background: linear-gradient(to top right, #333, #777);
-			color: #fff;
-			padding: .1rem .5rem;
-			border-bottom-left-radius: .5rem;
-			border-top-right-radius: .5rem;
+	.premium-button {
+		display: inline-block;
+		content: "Premium feature";
+		position: absolute;
+		top:0;
+		right:0;
+		background: linear-gradient(to top right, #333, #777);
+		color: #fff;
+		padding: .1rem .5rem;
+		border-bottom-left-radius: .5rem;
+		border-top-right-radius: .5rem;
+		text-decoration: none;
+		transition: .3s all ease-in-out;
+
+		&:hover {
+			color: black;
+			background: linear-gradient(to top right, #aaa, #fff);
 		}
 	}
 }

@@ -19,7 +19,7 @@ build/Release
 
 # Dependency directories
 node_modules/
-easy-notes/
+eazy-notes/
 
 # Optional npm cache directory
 .npm

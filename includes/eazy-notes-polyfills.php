@@ -2,8 +2,8 @@
 /**
  * PHP Polyfills
  *
- * @package Easy_Notes
- * @subpackage Easy_Notes/includes
+ * @package Eazy_Notes
+ * @subpackage Eazy_Notes/includes
  * @version 1.0.0
  */
 

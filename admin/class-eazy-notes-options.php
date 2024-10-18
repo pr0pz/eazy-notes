@@ -2,16 +2,16 @@
 /**
  * Class managing all plugin options.
  *
- * @package Easy_Notes
- * @subpackage Easy_Notes/admin
+ * @package Eazy_Notes
+ * @subpackage Eazy_Notes/admin
  * @version 1.0.0
  */
 
-namespace Propz\Easy_Notes_Lite;
+namespace Propz\Eazy_Notes;
 
 \defined( 'ABSPATH' ) || exit;
 
-class Easy_Notes_Options
+class Eazy_Notes_Options
 {
 	/** Plugin slug */
 	protected string $plugin_slug;
@@ -33,13 +33,13 @@ class Easy_Notes_Options
 	{
 		return [
 			'general' => [
-				'title' => __( 'General settings', 'easy-notes-lite' )
+				'title' => __( 'General settings', 'eazy-notes' )
 			],
 			'visibility' => [
-				'title' => __( 'Visibility settings', 'easy-notes-lite' )
+				'title' => __( 'Visibility settings', 'eazy-notes' )
 			],
 			'email' => [
-				'title' => __( 'Email settings', 'easy-notes-lite' )
+				'title' => __( 'Email settings', 'eazy-notes' )
 			]
 		];
 	}
@@ -54,149 +54,149 @@ class Easy_Notes_Options
 		return [
 			'post_type' => [
 				'label'			=> '',
-				'value' 		=> 'easy_note',
+				'value' 		=> 'eazy_note',
 				'type'			=> 'hidden',
 				'section'		=> 'general'
 			],
 			'note_name' => [
-				'label'			=> __( 'Note Name Singular', 'easy-notes-lite' ),
-				'value'			=> __( 'Note', 'easy-notes-lite' ),
+				'label'			=> __( 'Note Name Singular', 'eazy-notes' ),
+				'value'			=> 'Note',
 				'type'			=> 'text',
 				'section'		=> 'general',
 				'premium'		=> \true
 			],
 			'note_name_plural' => [
-				'label'			=> __( 'Note Name Plural', 'easy-notes-lite' ),
-				'value'			=> __( 'Notes', 'easy-notes-lite' ),
+				'label'			=> __( 'Note Name Plural', 'eazy-notes' ),
+				'value'			=> 'Notes',
 				'type'			=> 'text',
 				'section'		=> 'general',
-				'description'	=> __( "You can rename the notes if you want. The Menu names and URL's are generated from this settings.", 'easy-notes-lite' ),
+				'description'	=> __( "You can rename the notes if you want. The Menu names and URL's are generated from this settings.", 'eazy-notes' ),
 				'premium'		=> \true
 			],
 			'enable_block_editor' => [
-				'label'			=> __( 'Use Block Editor aka. Gutenberg?', 'easy-notes-lite' ),
+				'label'			=> __( 'Use Block Editor aka. Gutenberg?', 'eazy-notes' ),
 				'value'			=> 1,
 				'type'			=> 'checkbox',
 				'section'		=> 'general',
-				'description'	=> __( 'If you wanna use the Block Editor (Gutenberg) you need to enable the Rest API (Visibility > Enable Rest API).', 'easy-notes-lite' )
+				'description'	=> __( 'If you wanna use the Block Editor (Gutenberg) you need to enable the Rest API (Visibility > Enable Rest API).', 'eazy-notes' )
 			],
 			'revisions' => [
-				'label'			=> __( 'Save [note_name] revisions?', 'easy-notes-lite' ),
+				'label'			=> __( 'Save [note_name] revisions?', 'eazy-notes' ),
 				'value'			=> 0,
 				'type'			=> 'checkbox',
 				'section'		=> 'general',
-				'description'	=> __( 'Revisions are a history of your [note_name] edits so you can undo changes or restore previous versions.', 'easy-notes-lite' )
+				'description'	=> __( 'Revisions are a history of your [note_name] edits so you can undo changes or restore previous versions.', 'eazy-notes' )
 			],
 			'comments' => [
-				'label'			=> __( 'Enable comments for [note_name_plural]?', 'easy-notes-lite' ),
+				'label'			=> __( 'Enable comments for [note_name_plural]?', 'eazy-notes' ),
 				'value'			=> 0,
 				'type'			=> 'checkbox',
 				'section'		=> 'general',
-				'description'	=> __( 'Regardless of this setting you can always turn off comments for every individual [note_name].', 'easy-notes-lite' ),
+				'description'	=> __( 'Regardless of this setting you can always turn off comments for every individual [note_name].', 'eazy-notes' ),
 				'premium'		=> \true
 			],
 			'rewrite' => [
-				'label' 		=> __( "Enable user friendly URL's?", 'easy-notes-lite' ),
+				'label' 		=> __( "Enable user friendly URL's?", 'eazy-notes' ),
 				'value'			=> 1,
 				'type'			=> 'checkbox',
 				'section'		=> 'visibility',
 				'description' 	=> '<code>' . get_bloginfo( 'url' ) . '/<span id="post_name_slug">[note_name_slug]</span>/bla-[note_name_slug]-xyz/</code>'
 			],
 			'url_length' => [
-				'label' 		=> __( "How long should the randomly generated URL be?", 'easy-notes-lite' ),
+				'label' 		=> __( "How long should the randomly generated URL be?", 'eazy-notes' ),
 				'value'			=> 16,
 				'min'			=> 6,
 				'max'			=> 30,
 				'type'			=> 'number',
 				'section'		=> 'visibility',
-				'description' 	=> __( 'The default value is pretty good, but the longer the URL, the harder it is to guess it.', 'easy-notes-lite' ),
+				'description' 	=> __( 'The default value is pretty good, but the longer the URL, the harder it is to guess it.', 'eazy-notes' ),
 				'premium'		=> \true
 			],
 			'show_in_rest' => [
-				'label'			=> __( 'Enable Rest API?', 'easy-notes-lite' ),
+				'label'			=> __( 'Enable Rest API?', 'eazy-notes' ),
 				'value'			=> 1,
 				'type'			=> 'checkbox',
 				'section'		=> 'visibility',
-				'description'	=> __( 'The [note_name_plural] API endpoint is only available for logged-in users with the right capabilities.', 'easy-notes-lite' ) . '<br><code>[rest_url][note_name_plural_slug]/</code>'
+				'description'	=> __( 'The [note_name_plural] API endpoint is only available for logged-in users with the right capabilities.', 'eazy-notes' ) . '<br><code>[rest_url][note_name_plural_slug]/</code>'
 			],
 			'hide_from_search_engines' => [
-				'label'			=> __( 'Discourage search engines from indexing [note_name_plural]?', 'easy-notes-lite' ),
+				'label'			=> __( 'Discourage search engines from indexing [note_name_plural]?', 'eazy-notes' ),
 				'value'			=> 1,
 				'type'			=> 'checkbox',
 				'section'		=> 'visibility',
-				'description'	=> __( "Hide [note_name_plural] from search engine results. It is up to search engines to honor this request (noindex/nofollow).", 'easy-notes-lite' )
+				'description'	=> __( "Hide [note_name_plural] from search engine results. It is up to search engines to honor this request (noindex/nofollow).", 'eazy-notes' )
 			],
 			'exclude_from_search' => [
-				'label'			=> __( 'Exclude [note_name_plural] from search results?', 'easy-notes-lite' ),
+				'label'			=> __( 'Exclude [note_name_plural] from search results?', 'eazy-notes' ),
 				'value'			=> 1,
 				'type'			=> 'checkbox',
 				'section'		=> 'visibility',
-				'description'	=> __( "Per default you probably don't want your [note_name_plural] to appear on your websites search results.", 'easy-notes-lite' )
+				'description'	=> __( "Per default you probably don't want your [note_name_plural] to appear on your websites search results.", 'eazy-notes' )
 			],
 			'show_in_nav_menus' => [
-				'label'			=> __( 'Display [note_name_plural] in navigation menus?', 'easy-notes-lite' ),
+				'label'			=> __( 'Display [note_name_plural] in navigation menus?', 'eazy-notes' ),
 				'value'			=> 0,
 				'type'			=> 'checkbox',
 				'section'		=> 'visibility',
-				'description'	=> __( "Per default you probably don't want to link your [note_name_plural] in any menu.", 'easy-notes-lite' )
+				'description'	=> __( "Per default you probably don't want to link your [note_name_plural] in any menu.", 'eazy-notes' )
 			],
 			'has_archive' => [
-				'label'			=> __( 'Enable public archive page for your Notes?', 'easy-notes-lite' ),
+				'label'			=> __( 'Enable public archive page for your Notes?', 'eazy-notes' ),
 				'value'			=> 0,
 				'type'			=> 'checkbox',
 				'section'		=> 'visibility',
-				'description'	=> __( "Per default you probably don't want a public accessible archive page for your [note_name_plural].", 'easy-notes-lite' ) . '<br><code>' . get_bloginfo( 'url' ) . '/<span id="post_name_plural_slug">[note_name_plural_slug]</span>/</code>'
+				'description'	=> __( "Per default you probably don't want a public accessible archive page for your [note_name_plural].", 'eazy-notes' ) . '<br><code>' . get_bloginfo( 'url' ) . '/<span id="post_name_plural_slug">[note_name_plural_slug]</span>/</code>'
 			],
 			'must_be_logged_in' => [
-				'label'			=> __( 'Restrict access to logged-in users for all [note_name_plural]?', 'easy-notes-lite' ),
+				'label'			=> __( 'Restrict access to logged-in users for all [note_name_plural]?', 'eazy-notes' ),
 				'value'			=> 0,
 				'type'			=> 'checkbox',
 				'section'		=> 'visibility',
-				'description'	=> __( 'Regardless of this setting you can always restrict the access for every individual [note_name].', 'easy-notes-lite' ),
+				'description'	=> __( 'Regardless of this setting you can always restrict the access for every individual [note_name].', 'eazy-notes' ),
 				'premium'		=> \true
 			],
 			'delete_expired' => [
-				'label'			=> __( 'Delete expired/burned [note_name_plural]?', 'easy-notes-lite' ),
+				'label'			=> __( 'Delete expired/burned [note_name_plural]?', 'eazy-notes' ),
 				'value'			=> [
 					'delete_expired_no' => [
-						'label'	=> __( 'No', 'easy-notes-lite' ),
+						'label'	=> __( 'No', 'eazy-notes' ),
 						'value'	=> 'no'
 					],
 					'delete_expired_trash' => [
-						'label'	=> __( 'Yes, but just put them in the trash bin (non permanently)', 'easy-notes-lite' ),
+						'label'	=> __( 'Yes, but just put them in the trash bin (non permanently)', 'eazy-notes' ),
 						'value'	=> 'trash'
 					],
 					'delete_expired_yes' => [
-						'label'	=> __( 'Yes, and delete them permanently, like for real', 'easy-notes-lite' ),
+						'label'	=> __( 'Yes, and delete them permanently, like for real', 'eazy-notes' ),
 						'value'	=> 'delete'
 					]
 				],
 				'type'			=> 'select',
 				'section'		=> 'general',
-				'description'	=> __( "Choose if you want [note_name_plural] to get deleted automatically after they're expired or burned.", 'easy-notes-lite' ),
+				'description'	=> __( "Choose if you want [note_name_plural] to get deleted automatically after they're expired or burned.", 'eazy-notes' ),
 				'premium'		=> \true
 			],
 			'email_subject' => [
-				'label'			=> __( 'Email subject', 'easy-notes-lite' ),
-				'value'			=> __( '[[website_name]] A Note was sent to you', 'easy-notes-lite' ),
+				'label'			=> __( 'Email subject', 'eazy-notes' ),
+				'value'			=> __( '[[website_name]] A Note was sent to you', 'eazy-notes' ),
 				'type'			=> 'text',
 				'section'		=> 'email',
 				'class'			=> 'note-email',
 				'premium'		=> \true
 			],
 			'email_message' => [	
-				'label'			=> __( 'Email message (supports basic html)', 'easy-notes-lite' ),
-				'value'			=> __( "[website_name] just shared a Note with you:\n<a href='[permalink]' target='_blank'>[title]</a>", 'easy-notes-lite' ),
+				'label'			=> __( 'Email message (supports basic html)', 'eazy-notes' ),
+				'value'			=> __( "[website_name] just shared a Note with you:\n<a href='[permalink]' target='_blank'>[title]</a>", 'eazy-notes' ),
 				'type'			=> 'textarea',
 				'section'		=> 'email',
 				'class'			=> 'note-email',
 				'rows'			=> 6,
 				'description'	=>
-					__( "Customize your email subject and message.\nUse the following codes as replacement variables:", 'easy-notes-lite' )
+					__( "Customize your email subject and message.\nUse the following codes as replacement variables:", 'eazy-notes' )
 					. "
-					<code>[website_name] -> " . __( 'Your websites name', 'easy-notes-lite' ) . "</code>
-					<code>[permalink] -> " . __( '[note_name] permalink', 'easy-notes-lite' ) . "</code>
-					<code>[title] -> " . __( '[note_name] title', 'easy-notes-lite' ) . "</code>",
+					<code>[website_name] -> " . __( 'Your websites name', 'eazy-notes' ) . "</code>
+					<code>[permalink] -> " . __( '[note_name] permalink', 'eazy-notes' ) . "</code>
+					<code>[title] -> " . __( '[note_name] title', 'eazy-notes' ) . "</code>",
 				'premium'		=> \true
 			]
 		];

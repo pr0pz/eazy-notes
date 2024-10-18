@@ -2,24 +2,24 @@
 /**
  * Class managing the post type and it's features.
  *
- * @package Easy_Notes
- * @subpackage Easy_Notes/includes
+ * @package Eazy_Notes
+ * @subpackage Eazy_Notes/includes
  * @version 1.0.0
  */
 
-namespace Propz\Easy_Notes_Lite;
+namespace Propz\Eazy_Notes;
 
 \defined( 'ABSPATH' ) || exit;
 
-class Easy_Notes_Post
+class Eazy_Notes_Post
 {
 	/** Maintains and registers all hooks for the plugin. */
-	protected Easy_Notes_Admin $admin;
+	protected Eazy_Notes_Admin $admin;
 
 	/**
 	 * Core plugin functionality.
 	 */
-	public function __construct( Easy_Notes_Admin $admin )
+	public function __construct( Eazy_Notes_Admin $admin )
 	{
 		$this->admin = $admin;
 	}
@@ -46,47 +46,47 @@ class Easy_Notes_Post
 			'menu_name'				=> $note_name_plural,
 			'name_admin_bar'		=> $note_name_plural,
 			/* translators: %s: note name */
-			'archives'				=> \sprintf( __( '%s Archives', 'easy-notes-lite' ), $note_name ),
+			'archives'				=> \sprintf( __( '%s Archives', 'eazy-notes' ), $note_name ),
 			/* translators: %s: note name */
-			'attributes'			=> \sprintf( __( '%s Attributes', 'easy-notes-lite' ), $note_name ),
+			'attributes'			=> \sprintf( __( '%s Attributes', 'eazy-notes' ), $note_name ),
 			/* translators: %s: note name plural */
-			'all_items'				=> \sprintf( __( 'All %s', 'easy-notes-lite' ), $note_name_plural ),
+			'all_items'				=> \sprintf( __( 'All %s', 'eazy-notes' ), $note_name_plural ),
 			/* translators: %s: note name */
-			'add_new_item'			=> \sprintf( __( 'Add New %s', 'easy-notes-lite' ), $note_name ),
+			'add_new_item'			=> \sprintf( __( 'Add New %s', 'eazy-notes' ), $note_name ),
 			/* translators: %s: note name */
-			'add_new'				=> esc_attr__( 'Add New', 'easy-notes-lite' ),
+			'add_new'				=> esc_attr__( 'Add New', 'eazy-notes' ),
 			/* translators: %s: note name */
-			'new_item'				=> \sprintf( __( 'New %s', 'easy-notes-lite' ), $note_name ),
+			'new_item'				=> \sprintf( __( 'New %s', 'eazy-notes' ), $note_name ),
 			/* translators: %s: note name */
-			'edit_item'				=> \sprintf( __( 'Edit %s', 'easy-notes-lite' ), $note_name ),
+			'edit_item'				=> \sprintf( __( 'Edit %s', 'eazy-notes' ), $note_name ),
 			/* translators: %s: note name */
-			'update_item'			=> \sprintf( __( 'Update %s', 'easy-notes-lite' ), $note_name ),
+			'update_item'			=> \sprintf( __( 'Update %s', 'eazy-notes' ), $note_name ),
 			/* translators: %s: note name */
-			'view_item'				=> \sprintf( __( 'View %s', 'easy-notes-lite' ), $note_name ),
+			'view_item'				=> \sprintf( __( 'View %s', 'eazy-notes' ), $note_name ),
 			/* translators: %s: note name plural */
-			'view_items'			=> \sprintf( __( 'View %s', 'easy-notes-lite' ), $note_name_plural ),
+			'view_items'			=> \sprintf( __( 'View %s', 'eazy-notes' ), $note_name_plural ),
 			/* translators: %s: note name */
-			'search_items'			=> \sprintf( __( 'Search %s', 'easy-notes-lite' ), $note_name ),
-			'not_found'			 	=> __( 'Not found', 'easy-notes-lite' ),
-			'not_found_in_trash'	=> __( 'Not found in Trash', 'easy-notes-lite' ),
+			'search_items'			=> \sprintf( __( 'Search %s', 'eazy-notes' ), $note_name ),
+			'not_found'			 	=> __( 'Not found', 'eazy-notes' ),
+			'not_found_in_trash'	=> __( 'Not found in Trash', 'eazy-notes' ),
 			/* translators: %s: note name */
-			'featured_image'		=> \sprintf( __( '%s Image', 'easy-notes-lite' ), $note_name ),
+			'featured_image'		=> \sprintf( __( '%s Image', 'eazy-notes' ), $note_name ),
 			/* translators: %s: note name */
-			'set_featured_image'	=> \sprintf( __( 'Set %s image', 'easy-notes-lite' ), $note_name ),
+			'set_featured_image'	=> \sprintf( __( 'Set %s image', 'eazy-notes' ), $note_name ),
 			/* translators: %s: note name */
-			'remove_featured_image' => \sprintf( __( 'Remove %s image', 'easy-notes-lite' ), $note_name ),
+			'remove_featured_image' => \sprintf( __( 'Remove %s image', 'eazy-notes' ), $note_name ),
 			/* translators: %s: note name */
-			'use_featured_image'	=> \sprintf( __( 'Use as %s image', 'easy-notes-lite' ), $note_name ),
+			'use_featured_image'	=> \sprintf( __( 'Use as %s image', 'eazy-notes' ), $note_name ),
 			/* translators: %s: note name */
-			'insert_into_item'		=> \sprintf( __( 'Insert into %s', 'easy-notes-lite' ), $note_name ),
+			'insert_into_item'		=> \sprintf( __( 'Insert into %s', 'eazy-notes' ), $note_name ),
 			/* translators: %s: note name */
-			'uploaded_to_this_item' => \sprintf( __( 'Uploaded to this %s', 'easy-notes-lite' ), $note_name ),
+			'uploaded_to_this_item' => \sprintf( __( 'Uploaded to this %s', 'eazy-notes' ), $note_name ),
 			/* translators: %s: note name */
-			'items_list'			=> \sprintf( __( '%s list', 'easy-notes-lite' ), $note_name_plural ),
+			'items_list'			=> \sprintf( __( '%s list', 'eazy-notes' ), $note_name_plural ),
 			/* translators: %s: note name */
-			'items_list_navigation' => \sprintf( __( '%s list navigation', 'easy-notes-lite' ), $note_name_plural ),
+			'items_list_navigation' => \sprintf( __( '%s list navigation', 'eazy-notes' ), $note_name_plural ),
 			/* translators: %s: note name */
-			'filter_items_list'	 	=> \sprintf( __( 'Filter %s list', 'easy-notes-lite' ), $note_name_plural ),
+			'filter_items_list'	 	=> \sprintf( __( 'Filter %s list', 'eazy-notes' ), $note_name_plural ),
 		];
 
 		// URL format
@@ -106,8 +106,8 @@ class Easy_Notes_Post
 		$args = [
 			'label'					=> $note_name,
 			'description'			=> $note_name,
-			'labels'				=> apply_filters( 'easy_notes_note_labels', $labels, $note_name, $note_name_plural ),
-			'supports'				=> apply_filters( 'easy_notes_note_supports', $supports ),
+			'labels'				=> apply_filters( 'eazy_notes_note_labels', $labels, $note_name, $note_name_plural ),
+			'supports'				=> apply_filters( 'eazy_notes_note_supports', $supports ),
 			'hierarchical'			=> \false,
 			'public'				=> \true,
 			'show_ui'				=> \true,
@@ -117,14 +117,14 @@ class Easy_Notes_Post
 			'show_in_admin_bar' 	=> \false,
 			'show_in_nav_menus' 	=> \false,
 			'show_in_rest'			=> (bool) $this->get_admin()->get_option( 'show_in_rest' ), // Needed for Block Editor to show
-			'rest_base'				=> apply_filters( 'easy_notes_note_rest_base', $note_slug_plural, $note_slug ),
+			'rest_base'				=> apply_filters( 'eazy_notes_note_rest_base', $note_slug_plural, $note_slug ),
 			'rest_controller_class' => 'WP_REST_Posts_Controller',
 			'can_export'			=> \true,
 			'has_archive'			=> $this->get_admin()->get_option( 'has_archive' ) ? $note_slug_plural : \false,
 			'exclude_from_search'	=> (bool) $this->get_admin()->get_option( 'exclude_from_search' ),
 			'publicly_queryable'	=> \true,
-			'rewrite'				=> apply_filters( 'easy_notes_note_rewrite', $rewrite, $note_slug, $note_slug_plural ),
-			'capability_type'		=> apply_filters( 'easy_notes_note_capability_type', 'post' )
+			'rewrite'				=> apply_filters( 'eazy_notes_note_rewrite', $rewrite, $note_slug, $note_slug_plural ),
+			'capability_type'		=> apply_filters( 'eazy_notes_note_capability_type', 'post' )
 		];
 		register_post_type( $this->get_admin()->get_post_type(), $args );
 	}
@@ -155,7 +155,7 @@ class Easy_Notes_Post
 		
 		if ( post_password_required( $post_id ) )
 		{
-			return __( 'Password protected', 'easy-notes-lite' );
+			return __( 'Password protected', 'eazy-notes' );
 		}
 
 		return $title;
@@ -205,9 +205,9 @@ class Easy_Notes_Post
 	/**
 	 * Get admin instance
 	 * 
-	 * @return Easy_Notes_Admin
+	 * @return Eazy_Notes_Admin
 	 */
-	private function get_admin(): Easy_Notes_Admin
+	private function get_admin(): Eazy_Notes_Admin
 	{
 		return $this->admin;
 	}

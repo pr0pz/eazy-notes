@@ -2,22 +2,22 @@
 /**
  * The core plugin class.
  *
- * @package Easy_Notes
- * @subpackage Easy_Notes/includes
+ * @package Eazy_Notes
+ * @subpackage Eazy_Notes/includes
  * @version 1.0.0
  */
 
-namespace Propz\Easy_Notes_Lite;
+namespace Propz\Eazy_Notes;
 
 \defined( 'ABSPATH' ) || exit;
 
-class Easy_Notes
+class Eazy_Notes
 {
 	/** Maintains and registers all hooks for the plugin. */
-	protected Easy_Notes_Loader $loader;
+	protected Eazy_Notes_Loader $loader;
 
 	/** Maintains and registers all hooks for the plugin. */
-	protected Easy_Notes_Admin $admin;
+	protected Eazy_Notes_Admin $admin;
 
 	/** Plugin name. */
 	protected string $plugin_name;
@@ -65,24 +65,24 @@ class Easy_Notes
 		/**
 		 * The class responsible for orchestrating the actions and filters of the core plugin.
 		 */
-		require_once $this->get_plugin_path() . 'includes/class-easy-notes-loader.php';
+		require_once $this->get_plugin_path() . 'includes/class-eazy-notes-loader.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once $this->get_plugin_path() . 'admin/class-easy-notes-admin.php';
+		require_once $this->get_plugin_path() . 'admin/class-eazy-notes-admin.php';
 
 		/**
 		 * The class responsible for managing the options.
 		 */
-		require_once $this->get_plugin_path() . 'admin/class-easy-notes-options.php';
+		require_once $this->get_plugin_path() . 'admin/class-eazy-notes-options.php';
 
 		/**
 		 * The class managing the post type
 		 */
-		require_once $this->get_plugin_path() . 'includes/class-easy-notes-post.php';
+		require_once $this->get_plugin_path() . 'includes/class-eazy-notes-post.php';
 
-		$this->loader = new Easy_Notes_Loader();
+		$this->loader = new Eazy_Notes_Loader();
 	}
 
 	/**
@@ -92,11 +92,11 @@ class Easy_Notes
 	 */
 	private function init_admin(): void
 	{
-		$this->admin = new Easy_Notes_Admin(
+		$this->admin = new Eazy_Notes_Admin(
 			$this->get_plugin_name(),
 			$this->get_plugin_url(),
 			$this->get_version(),
-			new Easy_Notes_Options( 'easy_notes' )
+			new Eazy_Notes_Options( 'eazy_notes' )
 		);
 	}
 
@@ -132,7 +132,7 @@ class Easy_Notes
 	 */
 	private function define_public_hooks(): void
 	{
-		$plugin_post = new Easy_Notes_Post( $this->get_admin() );
+		$plugin_post = new Eazy_Notes_Post( $this->get_admin() );
 
 		$this->loader->add_action( 'init', $plugin_post, 'create_post_type', 10 );
 		$this->loader->add_filter( 'wp_insert_post_data', $plugin_post, 'randomize_slug_on_post_save', 10 );
@@ -197,9 +197,9 @@ class Easy_Notes
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @return Easy_Notes_Admin Orchestrates the hooks of the plugin.
+	 * @return Eazy_Notes_Admin Orchestrates the hooks of the plugin.
 	 */
-	public function get_admin(): Easy_Notes_Admin
+	public function get_admin(): Eazy_Notes_Admin
 	{
 		return $this->admin;
 	}

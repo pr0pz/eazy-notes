@@ -1,4 +1,4 @@
-# __Easy Notes Lite__
+# __Eazy Notes__
 
 ![Made for WordPress 5.3 and above](https://img.shields.io/static/v1?label&message=>=%205.3&color=0073aa&logo=wordpress&logoColor=fff)
 ![Minimum PHP version: 7.4](https://img.shields.io/static/v1?label&message=>=%207.4&color=777BB3&logo=php&logoColor=fff)
@@ -14,7 +14,7 @@ _Like it? I'd appreciate the support :)_
 
 ### __Description__
 
-**Easy Notes Lite** is a simple pastebin-style plugin for WordPress that allows you to share all kinds of information in the form of notes with the world. When a note is created, a random URL is automatically generated, ensuring it cannot be easily guessed. You can also customize the URL yourself if desired.
+**Eazy Notes** is a simple pastebin-style plugin for WordPress that allows you to share all kinds of information in the form of notes with the world. When a note is created, a random URL is automatically generated, ensuring it cannot be easily guessed. You can also customize the URL yourself if desired.
 
 ### __Features__
 
@@ -36,7 +36,7 @@ _Like it? I'd appreciate the support :)_
 
 1. Download the latest release
 2. Go to your wp-admin/plugins.php and install the plugin
-3. Configure your settings under ‘Easy Notes Lite’ in the admin dashboard.
+3. Configure your settings under ‘Eazy Notes’ in the admin dashboard.
 4. Have fun!
 
 ### __Frequently Asked Questions__
@@ -59,12 +59,12 @@ The plugin generates random URLs that are difficult to guess. You can also custo
 
 <details>
 <summary>Does this plugin support the block editor (Gutenberg)?</summary>
-Yes! Easy Notes Lite is fully compatible with the block editor as well as other page builders.
+Yes! Eazy Notes is fully compatible with the block editor as well as other page builders.
 </details>
 
 <details>
 <summary>Is this plugin compatible with elementor? Divi builder? Bricks?</summary>
-Yes! Easy Notes Lite is fully compatible with all major page builders. Having problem with your prefered builder? Please open a request.
+Yes! Eazy Notes is fully compatible with all major page builders. Having problem with your prefered builder? Please open a request.
 </details>
 
 <details>
@@ -79,7 +79,7 @@ Yes! The premium version of this plugin adds features like:
 
 ### __Found any Bugs?__
 
-If you find any bugs/errors, feel free to [post an issue](https://github.com/pr0pz/easy-notes-lite/issues).
+If you find any bugs/errors, feel free to [post an issue](https://github.com/pr0pz/eazy-notes/issues).
 
 ### __License__
 

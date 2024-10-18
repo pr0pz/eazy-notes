@@ -1,4 +1,4 @@
-### Easy Notes Lite
+### Eazy Notes
 Contributors: propz
 Tags: notes, pastebin, private notes, share notes, secure note
 Requires at least: 5.3
@@ -12,7 +12,7 @@ Donate link: https://propz.de/donate/
 A simple and secure way to share notes/information via custom URLs, hidden from search engines and easy to use with any page builder.
 
 ## Description
-**Easy Notes Lite** is a simple pastebin-style plugin for WordPress that allows you to share all kinds of information in the form of notes with the world. When a note is created, a random URL is automatically generated, ensuring it cannot be easily guessed. You can also customize the URL yourself if desired.
+**Eazy Notes** is a simple pastebin-style plugin for WordPress that allows you to share all kinds of information in the form of notes with the world. When a note is created, a random URL is automatically generated, ensuring it cannot be easily guessed. You can also customize the URL yourself if desired.
 
 **Main Features:**
 - Share any kind of information via secure, random URLs with your clients/visitors.
@@ -32,7 +32,7 @@ A simple and secure way to share notes/information via custom URLs, hidden from 
 ## Installation
 1. Download the latest release
 2. Go to your wp-admin/plugins.php and install the plugin
-3. Configure your settings under ‘Easy Notes Lite’ in the admin dashboard.
+3. Configure your settings under ‘Eazy Notes’ in the admin dashboard.
 4. Have fun!
 
 ## Frequently Asked Questions
@@ -44,10 +44,10 @@ Yes, you can customize the note URL after the note has been created.
 The plugin generates random URLs that are difficult to guess. You can also customize the URL length for added security. This is no 
 
 # Does this plugin support the block editor (Gutenberg)?
-Yes! Easy Notes Lite is fully compatible with the block editor as well as other page builders.
+Yes! Eazy Notes is fully compatible with the block editor as well as other page builders.
 
 # Is this plugin compatible with elementor? Divi builder? Bricks?
-Yes! Easy Notes Lite is fully compatible with all major page builders. Having problem with your prefered builder? Please open a request.
+Yes! Eazy Notes is fully compatible with all major page builders. Having problem with your prefered builder? Please open a request.
 
 # Are there premium features available?
 Yes! The premium version of this plugin adds features like:
@@ -60,19 +60,19 @@ Yes! The premium version of this plugin adds features like:
 ## Screenshots
 1. Creating a new note using the block editor.
 2. Example of a generated note URL.
-3. Easy Notes settings panel.
+3. Eazy Notes settings panel.
 
 ## Changelog
 
 # 1.0.0
-* Initial release of Easy Notes Lite.
+* Initial release of Eazy Notes.
 
 ## Upgrade Notice
 # 1.0.0
 Initial release. Upgrade to the premium version for advanced features like burn after reading and more.
 
 ## Premium Features
-Consider upgrading to the premium version of Easy Notes for the following extra functionalities:
+Consider upgrading to the premium version of Eazy Notes for the following extra functionalities:
 - Change the name of notes (singular and plural).
 - Burn after reading option.
 - Set expiration dates or times for notes.

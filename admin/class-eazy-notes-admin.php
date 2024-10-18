@@ -2,16 +2,16 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * @package Easy_Notes
- * @subpackage Easy_Notes/admin
+ * @package Eazy_Notes
+ * @subpackage Eazy_Notes/admin
  * @version 1.0.0
  */
 
-namespace Propz\Easy_Notes_Lite;
+namespace Propz\Eazy_Notes;
 
 \defined( 'ABSPATH' ) || exit;
 
-class Easy_Notes_Admin
+class Eazy_Notes_Admin
 {
 	/** Plugin name. */
 	protected string $plugin_name;
@@ -26,20 +26,20 @@ class Easy_Notes_Admin
 	protected string $plugin_version;	
 
 	/** PLugin Options Instance. */
-	protected Easy_Notes_Options $plugin_options;
+	protected Eazy_Notes_Options $plugin_options;
 
 	/**
 	 * Constructor
 	 *
 	 * @param string $plugin_name Plugin name.
 	 * @param string $plugin_url Plugin url.
-	 * @param Easy_Notes_Options Options instance
+	 * @param Eazy_Notes_Options Options instance
 	 */
 	public function __construct(
 		string $plugin_name,
 		string $plugin_url,
 		string $plugin_version,
-		Easy_Notes_Options $plugin_options
+		Eazy_Notes_Options $plugin_options
 	)
 	{
 		$this->plugin_name = $plugin_name;
@@ -79,9 +79,9 @@ class Easy_Notes_Admin
 		add_submenu_page(
 			'options-general.php',
 			/* translators: %s: plugin name */
-			\sprintf( __( '%s Settings', 'easy-notes-lite' ), $this->get_plugin_name() ),
+			\sprintf( __( '%s Settings', 'eazy-notes' ), $this->get_plugin_name() ),
 			$this->get_plugin_name(),
-			apply_filters( 'easy_notes_settings_page_capability', 'manage_options' ),
+			apply_filters( 'eazy_notes_settings_page_capability', 'manage_options' ),
 			$this->plugin_options->get_option_name(),
 			[ $this, 'render_settings_page' ]
 		);
@@ -96,7 +96,7 @@ class Easy_Notes_Admin
 	 */
 	public function render_settings_page(): void
 	{
-		if ( ! current_user_can( apply_filters( 'easy_notes_settings_page_capability', 'manage_options' ) ) ) return;
+		if ( ! current_user_can( apply_filters( 'eazy_notes_settings_page_capability', 'manage_options' ) ) ) return;
 		?>
 		<div id="<?php echo esc_attr( $this->plugin_options->get_option_name() ); ?>" class="wrap">
 			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
@@ -122,7 +122,7 @@ class Easy_Notes_Admin
 		{
 			// Open section
 			echo '
-			<table class="form-table easy-notes-section section-' . esc_attr( $section_id ) . '" role="presentation">
+			<table class="form-table eazy-notes-section section-' . esc_attr( $section_id ) . '" role="presentation">
 				<tbody>
 					<tr>
 						<th scope="row">' . esc_html( $section['title'] ) . '</th>
@@ -261,8 +261,10 @@ class Easy_Notes_Admin
 				break;
 		}
 
+		$premium = !empty( $field['premium'] ) ? '<a href="https://propz.de/plugin-tools/eazy-notes/" class="premium-button" title="' . __( 'Get the pro version baby!', 'eazy-notes' ) . '" target="_blank" rel="noopener">' . __( 'Pro Feature', 'eazy-notes' ) . '</a>' : '';
+
 		// Wrap it up
-		$output = !empty( $output ) ? '<div class="' . $field_wrapper_classes . '">' . $output . '</div>' : '';
+		$output = !empty( $output ) ? '<div class="' . $field_wrapper_classes . '">' . $premium . $output . '</div>' : '';
 
 		echo wp_kses( $output, $this->plugin_options->get_allowed_html() );
 	}
@@ -466,19 +468,19 @@ class Easy_Notes_Admin
 			return new \WP_Error(
 				'rest_forbidden',
 				/* translators: %s: note name plural */
-				\sprintf( __( '%s are only available for logged in users.', 'easy-notes-lite' ), $this->get_note_name_plural() ),
+				\sprintf( __( '%s are only available for logged in users.', 'eazy-notes' ), $this->get_note_name_plural() ),
 				[ 'status' => 401 ]
 			);
 		}
 
 		// Überprüfe, ob der Benutzer die erforderlichen Fähigkeiten hat
-		$edit_note_capability = apply_filters( 'easy_notes_edit_note_capability', 'edit_posts' );
+		$edit_note_capability = apply_filters( 'eazy_notes_edit_note_capability', 'edit_posts' );
 		if ( !current_user_can( $edit_note_capability ) )
 		{
 			return new \WP_Error(
 				'rest_forbidden',
 				/* translators: %s: note name plural */
-				\sprintf( __( '%1$s are only available for roles with `%2$s` capability.', 'easy-notes-lite' ), $this->get_note_name_plural(), $edit_note_capability ),
+				\sprintf( __( '%1$s are only available for roles with `%2$s` capability.', 'eazy-notes' ), $this->get_note_name_plural(), $edit_note_capability ),
 				[ 'status' => 403 ]
 			);
 		}
@@ -529,7 +531,7 @@ class Easy_Notes_Admin
 	public function load_plugin_textdomain(): void
 	{
 		$plugin_rel_path = $this->get_plugin_id() . '/languages';
-		load_plugin_textdomain( 'easy-notes-lite', false, $plugin_rel_path );
+		load_plugin_textdomain( 'eazy-notes', false, $plugin_rel_path );
 	}
 
 	/**

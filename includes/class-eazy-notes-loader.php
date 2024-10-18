@@ -6,16 +6,16 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package Easy_Notes
- * @subpackage Easy_Notes/includes
+ * @package Eazy_Notes
+ * @subpackage Eazy_Notes/includes
  * @version 1.0.0
  */
 
-namespace Propz\Easy_Notes_Lite;
+namespace Propz\Eazy_Notes;
 
 \defined( 'ABSPATH' ) || exit;
 
-class Easy_Notes_Loader
+class Eazy_Notes_Loader
 {
 	/** All plugin actions. */
 	protected array $actions;
