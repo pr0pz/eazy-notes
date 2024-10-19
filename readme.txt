@@ -58,9 +58,9 @@ Yes! The premium version of this plugin adds features like:
 - Assign notes to specific users or make them available only to logged-in users
 
 ## Screenshots
-1. Creating a new note using the block editor.
-2. Example of a generated note URL.
-3. Eazy Notes settings panel.
+1. Eazy Notes overview
+2. Eazy Notes Settings page
+3. Eazy Notes frontend view
 
 ## Changelog
 
