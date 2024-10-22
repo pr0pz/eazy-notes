@@ -81,6 +81,23 @@ Yes! The premium version of this plugin adds features like:
 
 If you find any bugs/errors, feel free to [post an issue](https://github.com/pr0pz/eazy-notes/issues).
 
+### __Publishing to WP__
+
+1. Initialize the SVN bridge using git svn init and point it to the WordPress.org SVN repository:
+
+```
+git svn init https://plugins.svn.wordpress.org/eazy-notes --stdlayout
+# Take over 10 hours
+git svn fetch
+# Change branche to trunk
+git checkout trunk
+# Commit changes to SVN
+git svn dcommit
+# Tag release
+git svn tag 1.0.0
+```
+
+
 ### __License__
 
 ![License: GPLv2](https://img.shields.io/static/v1?label=License&message=GNU&color=a32d2a&logo=gnu&logoColor=fff)
