@@ -1,6 +1,6 @@
-### Eazy Notes
+### Eazy Notes - The easiest way to share information with the world
 Contributors: propz
-Tags: notes, pastebin, private notes, share notes, secure note
+Tags: note, notes, paste, pastebin, share
 Requires at least: 5.3
 Tested up to: 6.6.2
 Requires PHP: 7.4
@@ -9,25 +9,31 @@ License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Donate link: https://propz.de/donate/
 
-A simple and secure way to share notes/information via custom URLs, hidden from search engines and easy to use with any page builder.
+A simple way to share notes/information via custom URLs, hidden from search engines and easy to use with any page builder.
 
 ## Description
+# Eazy Notes — It's the best, believe me!
+
+Let me tell you, folks, Eazy Notes is absolutely tremendous. It’s the easiest, most powerful way to share information with the world. Everybody’s talking about it. You create notes, you send them out, and let me tell you, nobody can guess the URL — it’s that secure. You can share anything: text, images, audio, even videos, and it’s all right there on your own website. No one else has something this good, trust me! It’s going to bring you so much traffic, your website will be winning every day. It’s big league, folks. Everyone needs Eazy Notes. It’s the best note-sharing plugin ever. Period.
+
+# Normal people would say
+
 **Eazy Notes** is a simple pastebin-style plugin for WordPress that allows you to share all kinds of information in the form of notes with the world. When a note is created, a random URL is automatically generated, ensuring it cannot be easily guessed. You can also customize the URL yourself if desired.
 
-**Main Features:**
-- Share any kind of information via secure, random URLs with your clients/visitors.
-- Notes can contain text, images, audio, video, code, or entire pages.
-- Fully compatible with all major page builders and of course with the Block Editor.
-- Automatically hides notes from search engines and excludes them from internal search results.
-- REST API is restricted to logged-in users with appropriate capabilities.
-- Generate traffic to your website by sharing a custom link back to your site.
+# Main Features:
+* Share any kind of information via random URLs (very hard to guess) with your clients/visitors.
+* Notes can contain text, images, audio, video, code, or entire pages.
+* Fully compatible with all major page builders and of course with the Block Editor.
+* Automatically hides notes from search engines and excludes them from internal search results.
+* REST API is restricted to logged-in users with appropriate capabilities.
+* Generate traffic to your website by sharing a custom link back to your site.
 
 **Tested with:**
-- ✅ All twenty-* themes
-- ✅ Divi Theme
-- ✅ Elementor
-- ✅ Divi Builder
-- ✅ Bricks Builder
+* ✅ All twenty-* themes
+* ✅ Divi Theme
+* ✅ Elementor
+* ✅ Divi Builder
+* ✅ Bricks Builder
 
 ## Installation
 1. Download the latest release
